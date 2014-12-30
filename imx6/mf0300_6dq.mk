@@ -29,6 +29,17 @@ PRODUCT_COPY_FILES +=	\
 
 # GPU files
 
+# Azurewave WiFi/BT files
+PRODUCT_COPY_FILES +=   \
+	device/fic-extend/3rd-party/azw-broadcom/firmware/fw_bcmdhd_apsta.bin:system/etc/firmware/fw_bcmdhd_apsta.bin \
+      	device/fic-extend/3rd-party/azw-broadcom/firmware/fw_bcmdhd.bin:system/etc/firmware/fw_bcmdhd.bin \
+      	device/fic-extend/3rd-party/azw-broadcom/firmware/fw_bcmdhd_p2p.bin:system/etc/firmware/fw_bcmdhd_p2p.bin \
+      	device/fic-extend/3rd-party/azw-broadcom/firmware/BCM4330B1_002.001.003.0967.0973.hcd:system/etc/firmware/BCM4330B1_002.001.003.0967.0973.hcd \
+      	device/fic-extend/3rd-party/azw-broadcom/nvram/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
+	device/fic-extend/3rd-party/azw-broadcom/nvram/nvram.txt:system/etc/firmware/nvram.txt \
+	hardware/broadcom/wlan/bcmdhd/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+	hardware/broadcom/wlan/bcmdhd/config/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
 DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
 
 PRODUCT_CHARACTERISTICS := tablet

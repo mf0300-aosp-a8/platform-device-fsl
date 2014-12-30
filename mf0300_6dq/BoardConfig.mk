@@ -67,6 +67,10 @@ ifeq ($(BOARD_WLAN_VENDOR),BROADCOM)
 	BOARD_WLAN_DEVICE			 := bcmdhd
 	BOARD_WPA_SUPPLICANT_PRIVATE_LIB	 := lib_driver_cmd_bcmdhd
 	BOARD_HOSTAPD_PRIVATE_LIB		 := lib_driver_cmd_bcmdhd
+
+	WIFI_DRIVER_MODULE_NAME 		 := "bcmdhd"
+	WIFI_DRIVER_MODULE_ARG			 := "iface_name=wlan firmware_path=/system/etc/firmware/fw_bcmdhd.bin nvram_path=/system/etc/firmware/nvram.txt"
+
 endif
 
 WPA_SUPPLICANT_VERSION			 := VER_0_8_X

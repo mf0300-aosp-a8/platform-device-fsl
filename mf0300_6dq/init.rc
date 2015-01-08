@@ -19,19 +19,6 @@ on init
 
 on boot
 
-    chown system input /sys/class/input/input1/enable
-    chown system input /sys/class/input/input1/delay
-    chown system input /sys/class/input/input1/wake
-    chown system input /sys/class/input/input2/enable
-    chown system input /sys/class/input/input2/delay
-    chown system input /sys/class/input/input2/wake
-    chown compass input /sys/class/input/input3/offsets
-    chown system input /sys/class/input/input4/enable
-    chown system input /sys/class/input/input4/delay
-    chown system input /sys/class/input/input4/wake
-
-    write /sys/class/input/input1/position 5 
-    write /sys/class/input/input2/position 6
 #    write /sys/class/input/input4/threshold 3
 
  # bluetooth LPM
@@ -195,40 +182,9 @@ service iprenew_p2p /system/bin/dhcpcd -n
     oneshot
 
 # magd daemon
-service magd /system/bin/magd
-    class late_start
-    user system
-    group input
-    oneshot
-
-# Orion InG
-service ing /system/bin/ingsvcd -c /system/etc/gps/Orion.ini
-    socket athrkv9988    stream 666 system system
-    socket athrshmsocket stream 666 system system
-    socket athrsupl59991 stream 666 system system
-    class late_start
-    user root
-    group gps
-    oneshot
 
 service charger /charger
     class charger
-
-service orientationd /system/bin/orientationd
-    class main
-   user compass
-   group input
-
-service geomagneticd /system/bin/geomagneticd
-    class main
-   user compass
-   group system input
-
-service glgps /system/bin/glgps -c /system/etc/gpsconfig.xml
-    socket gps seqpacket 777 root root
-    class main
-    user root
-    group system
 
 # Factory serial 
 service sernd /system/bin/sernd
@@ -241,6 +197,17 @@ service ChkUSBSerial /system/bin/checkfiles
 	class main
 	user root
 	oneshot
+
+service eGTouchD /system/bin/eGTouchD
+	class main
+	user root
+	group root
+	oneshot
+
+# run the elo touch driver as a critial member
+service elo_touch /system/bin/elo_mt_android
+	class core
+	critical
 
 on fs
 # mount ext4 partitions

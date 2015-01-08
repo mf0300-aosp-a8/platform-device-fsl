@@ -17,6 +17,11 @@ PRODUCT_NAME := mf0300_6dq
 PRODUCT_DEVICE := mf0300_6dq
 
 PRODUCT_COPY_FILES += \
+	device/fsl/imx6/eeti/eGTouchD:system/bin/eGTouchD \
+	device/fsl/imx6/eeti/eGTouchA.ini:system/etc/eGTouchA.ini \
+	device/fsl/imx6/eeti/eGalaxTouch_VirtualDevice.idc:system/usr/idc/eGalaxTouch_VirtualDevice.idc \
+	device/fsl/imx6/elo/elo_mt_android:system/bin/elo_mt_android \
+	device/fsl/imx6/elo/EloMultiTouchScreen.idc:system/usr/idc/EloMultiTouchScreen.idc \
 	device/fsl/mf0300_6dq/required_hardware.xml:system/etc/permissions/required_hardware.xml \
 	device/fsl/mf0300_6dq/init.rc:root/init.freescale.rc \
 	device/fsl/mf0300_6dq/audio_policy.conf:system/etc/audio_policy.conf \

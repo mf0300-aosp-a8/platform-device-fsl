@@ -17,6 +17,21 @@ on init
     symlink /storage/emulated/legacy /storage/sdcard0
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
+    symlink /mnt/media_rw/udisk_2 /storage/udisk_2
+    mkdir /mnt/media_rw/udisk_2 0755 system system
+    symlink /mnt/media_rw/udisk_3 /storage/udisk_3
+    mkdir /mnt/media_rw/udisk_3 0755 system system
+    symlink /mnt/media_rw/udisk_4 /storage/udisk_4
+    mkdir /mnt/media_rw/udisk_4 0755 system system
+    symlink /mnt/media_rw/udisk_5 /storage/udisk_5
+    mkdir /mnt/media_rw/udisk_5 0755 system system
+    symlink /mnt/media_rw/udisk_6 /storage/udisk_6
+    mkdir /mnt/media_rw/udisk_6 0755 system system
+    symlink /mnt/media_rw/udisk_7 /storage/udisk_7
+    mkdir /mnt/media_rw/udisk_7 0755 system system
+    symlink /mnt/media_rw/udisk_8 /storage/udisk_8
+    mkdir /mnt/media_rw/udisk_8 0755 system system
+
 on boot
 
 #    write /sys/class/input/input4/threshold 3

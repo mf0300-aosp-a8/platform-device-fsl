@@ -134,7 +134,7 @@ IMX_CAMERA_HAL_V2 := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 #define consumer IR HAL support
-IMX6_CONSUMER_IR_HAL := true
+IMX6_CONSUMER_IR_HAL := false
 
 TARGET_KERNEL_DEFCONF := imx_v7_mf0300_android_defconfig
 TARGET_BOOTLOADER_CONFIG := imx6q:mx6qmf0300android_config

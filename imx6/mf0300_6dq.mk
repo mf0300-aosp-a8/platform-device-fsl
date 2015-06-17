@@ -12,6 +12,18 @@ ifneq ($(wildcard device/fsl/mf0300_6dq/fstab.freescale),)
 $(shell touch device/fsl/mf0300_6dq/fstab.freescale)
 endif
 
+ifneq ($(wildcard device/fsl/mf0300_6dq/init.rc),)
+$(shell touch device/fsl/mf0300_6dq/init.rc)
+endif
+
+ifneq ($(wildcard device/fsl/mf0300_6dq/init.fec_1.rc),)
+$(shell touch device/fsl/mf0300_6dq/init.fec_1.rc)
+endif
+
+ifneq ($(wildcard device/fsl/mf0300_6dq/init.fec_2.rc),)
+$(shell touch device/fsl/mf0300_6dq/init.fec_2.rc)
+endif
+
 # Overrides
 PRODUCT_NAME := mf0300_6dq
 PRODUCT_DEVICE := mf0300_6dq
@@ -23,7 +35,6 @@ PRODUCT_COPY_FILES += \
 	device/fsl/imx6/elo/elo_mt_android:system/bin/elo_mt_android \
 	device/fsl/imx6/elo/EloMultiTouchScreen.idc:system/usr/idc/EloMultiTouchScreen.idc \
 	device/fsl/mf0300_6dq/required_hardware.xml:system/etc/permissions/required_hardware.xml \
-	device/fsl/mf0300_6dq/init.rc:root/init.freescale.rc \
 	device/fsl/mf0300_6dq/audio_policy.conf:system/etc/audio_policy.conf \
 	device/fsl/mf0300_6dq/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
@@ -45,7 +56,6 @@ PRODUCT_COPY_FILES +=   \
 	hardware/broadcom/wlan/bcmdhd/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
 	hardware/broadcom/wlan/bcmdhd/config/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
-DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
 
 PRODUCT_CHARACTERISTICS := tablet
 

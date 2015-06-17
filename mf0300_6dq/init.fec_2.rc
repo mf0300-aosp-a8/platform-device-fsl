@@ -143,6 +143,9 @@ on boot
     chown system system /sys/class/leds/UPDATE_LED/brightness
     chmod 0666 /sys/class/leds/UPDATE_LED/brightness
     	
+    chmod 777 /sys/class/thermal/thermal_zone0/temp	
+    setprop ro.sf.forceshowVK_all 1
+
 # logman
     setprop logman start
 

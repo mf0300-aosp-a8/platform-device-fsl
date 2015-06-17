@@ -6,6 +6,40 @@ include device/fsl/imx6/soc/imx6dq.mk
 include device/fsl/mf0300_6dq/build_id.mk
 include device/fsl/imx6/BoardConfigCommon.mk
 include device/fsl-proprietary/gpu-viv/fsl-gpu.mk
+#BOARD_FOR_FEC := true
+##################################################################3
+PLATFORM_SKULL ?= std
+
+ifeq ($(PLATFORM_SKULL),std)
+
+PRODUCT_COPY_FILES +=	\
+	device/fsl/mf0300_6dq/init.rc:root/init.freescale.rc 
+DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
+
+
+endif
+
+# FEC 1366x768 HT vendor 
+ifeq ($(PLATFORM_SKULL),fec_1)
+PRODUCT_COPY_FILES +=	\
+	device/fsl/mf0300_6dq/init.fec_1.rc:root/init.freescale.rc 
+DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay_fec
+
+
+endif
+
+# FEC 1366x768 and 1024x768 XGA
+ifeq ($(PLATFORM_SKULL),fec_2)
+PRODUCT_COPY_FILES +=	\
+	device/fsl/mf0300_6dq/init.fec_2.rc:root/init.freescale.rc 
+DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
+
+
+endif
+
+BOARD_FOR_FEC := true
+#################################################################################3
+
 # mf0300_6dq default target for EXT4
 BUILD_TARGET_FS ?= ext4
 include device/fsl/imx6/imx6_target_fs.mk
@@ -137,8 +171,8 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 IMX6_CONSUMER_IR_HAL := false
 
 TARGET_KERNEL_DEFCONF := imx_v7_mf0300_android_defconfig
-TARGET_BOOTLOADER_CONFIG := imx6q:mx6qmf0300android_config
-TARGET_BOARD_DTS_CONFIG := imx6q-mf0300:imx6q-mf0300.dtb 
+TARGET_BOOTLOADER_CONFIG := imx6q:mx6qmf0300android_config imx6q-xga:mx6qmf0300android-xga_config
+TARGET_BOARD_DTS_CONFIG := imx6q-mf0300:imx6q-mf0300.dtb imx6q-mf0300-xga:imx6q-mf0300-xga.dtb 
 
 BOARD_SEPOLICY_DIRS := \
        device/fsl/mf0300_6dq/sepolicy

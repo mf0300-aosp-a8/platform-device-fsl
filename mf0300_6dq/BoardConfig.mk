@@ -50,10 +50,17 @@ TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab_nand.freescale
 PRODUCT_COPY_FILES +=	\
 	device/fsl/mf0300_6dq/fstab_nand.freescale:root/fstab.freescale
 else
+ifeq ($(BUILD_TARGET_FS),sd)
+TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab_sd.freescale
+# build for sd card
+PRODUCT_COPY_FILES +=	\
+	device/fsl/mf0300_6dq/fstab_sd.freescale:root/fstab.freescale
+else
 TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab.freescale
 # build for ext4
 PRODUCT_COPY_FILES +=	\
 	device/fsl/mf0300_6dq/fstab.freescale:root/fstab.freescale
+endif
 endif # BUILD_TARGET_FS
 
 

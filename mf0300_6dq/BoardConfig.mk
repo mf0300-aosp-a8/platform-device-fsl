@@ -131,6 +131,7 @@ USE_QEMU_GPS_HARDWARE := false
 BOARD_HAS_SENSOR := false
 SENSOR_MMA8451 := false
 CONFIG_FIC_SENSOR_WITHOUT_GYRO := false
+CONFIG_FIC_ROOT := true
 
 # for recovery service
 TARGET_SELECT_KEY := 28

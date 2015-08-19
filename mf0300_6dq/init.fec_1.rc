@@ -148,6 +148,9 @@ on boot
     setprop ro.lockscreen.disable.default 1
     setprop ro.sf.forceshowVK_all 1
 
+# logman
+    setprop logman start
+
 # mount the debugfs
     mount debugfs none /sys/kernel/debug/
 
@@ -245,6 +248,46 @@ service eGTouchD /system/bin/eGTouchD
 service elo_touch /system/bin/elo_mt_android
 	class core
 	critical
+
+# background log man
+service log-logcat /system/bin/sh /system/bin/log-logcat
+	class main
+	user root
+	group root
+	disabled
+	oneshot
+
+service log-kernel /system/bin/sh /system/bin/log-kernel
+	class main
+	user root
+	group root
+	disabled
+	oneshot
+
+service log-temp /system/bin/sh /system/bin/log-temp
+	class main
+	user root
+	group root
+	disabled
+	oneshot
+
+service log-tools /system/bin/sh /system/bin/log-tools
+	class main
+	user root
+	group root
+	disabled
+	oneshot
+
+# logman and log tools
+on property:logman=start
+    start log-logcat
+    start log-kernel
+    start log-temp
+
+on property:logman=stop
+    stop log-logcat
+    stop log-kernel
+    stop log-temp
 
 on fs
 # mount ext4 partitions

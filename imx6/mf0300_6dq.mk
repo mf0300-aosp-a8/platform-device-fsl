@@ -45,14 +45,13 @@ PRODUCT_COPY_FILES +=	\
 
 # GPU files
 
-# Azurewave WiFi/BT files
-PRODUCT_COPY_FILES +=   \
-	device/fic-extend/3rd-party/azw-broadcom/firmware/fw_bcmdhd_apsta.bin:system/etc/firmware/fw_bcmdhd_apsta.bin \
-      	device/fic-extend/3rd-party/azw-broadcom/firmware/fw_bcmdhd.bin:system/etc/firmware/fw_bcmdhd.bin \
-      	device/fic-extend/3rd-party/azw-broadcom/firmware/fw_bcmdhd_p2p.bin:system/etc/firmware/fw_bcmdhd_p2p.bin \
-      	device/fic-extend/3rd-party/azw-broadcom/firmware/BCM4330B1_002.001.003.0967.0973.hcd:system/etc/firmware/BCM4330B1_002.001.003.0967.0973.hcd \
-      	device/fic-extend/3rd-party/azw-broadcom/nvram/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
-	device/fic-extend/3rd-party/azw-broadcom/nvram/nvram.txt:system/etc/firmware/nvram.txt \
+# AMPAK BROADCOM BCM4330 firmware and configuration files.
+PRODUCT_COPY_FILES += \
+	device/fsl/mf0300_6dq/broadcom/fw_bcm4330b2_ag.bin:system/etc/firmware/fw_bcmdhd.bin \
+	device/fsl/mf0300_6dq/broadcom/fw_bcm4330b2_ag_p2p.bin:system/etc/firmware/fw_bcmdhd_p2p.bin \
+	device/fsl/mf0300_6dq/broadcom/fw_bcm4330b2_ag_apsta.bin:system/etc/firmware/fw_bcmdhd_apsta.bin \
+	device/fsl/mf0300_6dq/broadcom/nvram_gb86302i.txt:system/etc/firmware/nvram.txt \
+	device/fsl/mf0300_6dq/broadcom/bcm4330b2.hcd:system/etc/firmware/bcm4330b2.hcd \
 	hardware/broadcom/wlan/bcmdhd/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
 	hardware/broadcom/wlan/bcmdhd/config/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 

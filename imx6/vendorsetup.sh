@@ -15,3 +15,5 @@ add_lunch_combo sabreauto_6sx-eng
 add_lunch_combo sabreauto_6sx-user
 add_lunch_combo hdmidongle_6dq-eng
 add_lunch_combo hdmidongle_6dq-user
+add_lunch_combo mf0300_6dq-eng
+add_lunch_combo mf0300_6dq-user

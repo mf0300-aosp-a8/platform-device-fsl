@@ -34,6 +34,11 @@ on boot
     write /sys/class/input/input2/position 6
 #    write /sys/class/input/input4/threshold 3
 
+ # bluetooth LPM
+    chmod 0220 /proc/bluetooth/sleep/lpm
+    chmod 0220 /proc/bluetooth/sleep/btwrite
+    chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
+    chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
 
     # Set permission for IIM node
     symlink /dev/mxs_viim /dev/mxc_mem

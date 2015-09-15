@@ -82,5 +82,4 @@ PRODUCT_COPY_FILES += \
 endif
 
 
-PRODUCT_PACKAGES += sernd libficextjni checkfiles
-
+PRODUCT_PACKAGES += sernd libficextjni checkfiles log-kernel log-logcat log-tools log-temp

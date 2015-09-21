@@ -8,7 +8,7 @@ include device/fsl/imx6/BoardConfigCommon.mk
 include device/fsl-proprietary/gpu-viv/fsl-gpu.mk
 #BOARD_FOR_FEC := true
 ##################################################################3
-PLATFORM_SKULL ?= std
+PLATFORM_SKULL ?= ht
 
 ifeq ($(PLATFORM_SKULL),std)
 
@@ -20,18 +20,18 @@ DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
 endif
 
 # FEC 1366x768 HT vendor 
-ifeq ($(PLATFORM_SKULL),fec_1)
+ifeq ($(PLATFORM_SKULL),ht)
 PRODUCT_COPY_FILES +=	\
-	device/fsl/mf0300_6dq/init.fec_1.rc:root/init.freescale.rc 
-DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay_fec
+	device/fsl/mf0300_6dq/init.ht.rc:root/init.freescale.rc 
+DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay_2nd
 
 
 endif
 
 # FEC 1366x768 and 1024x768 XGA
-ifeq ($(PLATFORM_SKULL),fec_2)
+ifeq ($(PLATFORM_SKULL),fec)
 PRODUCT_COPY_FILES +=	\
-	device/fsl/mf0300_6dq/init.fec_2.rc:root/init.freescale.rc 
+	device/fsl/mf0300_6dq/init.fec.rc:root/init.freescale.rc 
 DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
 
 

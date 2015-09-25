@@ -49,7 +49,7 @@ on boot
     chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
     chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
     setprop ro.bt.bdaddr_path "/data/misc/bluedroid/bdaddr"
-	chown bluetooth bluetooth /data/misc/bluedroid/bdaddr
+    chown bluetooth bluetooth /data/misc/bluedroid/bdaddr
     chmod 0666 /data/misc/bluedroid/bdaddr
 
     # Set permission for IIM node

@@ -31,6 +31,8 @@ on init
     mkdir /mnt/media_rw/udisk_7 0755 system system
     symlink /mnt/media_rw/udisk_8 /storage/udisk_8
     mkdir /mnt/media_rw/udisk_8 0755 system system
+    mkdir /mnt/media_rw/ssd 0775 system system
+    symlink /mnt/media_rw/ssd /storage/ssd
 
 on post-fs
        # log-system

@@ -73,5 +73,9 @@
              android:storageDescription="@string/storage_usb"
              android:primary="false"
              android:removable="true" />
+    <storage android:mountPoint="/storage/ssd"
+             android:storageDescription="@string/storage_usb"
+             android:primary="false"
+             android:removable="true" />
 </StorageList>
 

@@ -12,6 +12,7 @@
 /devices/soc0/soc.1/2100000.aips-bus/2184200.usb/ci_hdrc.0/usb1/1-1/1-1.2/1-1.2.1/1-1.2.1.1  /mnt/media_rw/udisk_5 vfat defaults voldmanaged=udisk_5:auto
 /devices/soc0/soc.1/2100000.aips-bus/2184200.usb/ci_hdrc.0/usb1/1-1/1-1.2/1-1.2.1/1-1.2.1.2  /mnt/media_rw/udisk_6 vfat defaults voldmanaged=udisk_6:auto
 /devices/soc0/soc.1/2100000.aips-bus/2184200.usb/ci_hdrc.0/usb1/1-1/1-1.4  /mnt/media_rw/udisk_7 vfat defaults voldmanaged=udisk_7:auto
+/devices/soc0/soc.1/2200000.sata/ahci/ata1/host0/target0:0:0/0:0:0:0  /mnt/media_rw/ssd vfat defaults voldmanaged=ssd:auto
 
 
 /dev/block/mmcblk3p5    /system      ext4    ro                                                                               wait

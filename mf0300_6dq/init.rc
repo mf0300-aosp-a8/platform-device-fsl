@@ -1,28 +1,27 @@
 on init
 	start watchdogd
 
-	# Support legacy paths
-	symlink /sdcard /mnt/sdcard
-	symlink /sdcard /storage/sdcard0
+    # Support legacy paths
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
 
-	# setup the global environment
-	export SHM_MOUNTPOINT /mnt/shm
-	export LIGHTSENSOR_PATH /sys/class/i2c-adapter/i2c-1/1-0044
-	export VPU_FW_PATH /system/lib/firmware/vpu
-	export CODEC_SHM_PATH /mnt/shm
-	export CORE_REGISTER_FILE /system/etc/core_register
-	export COMPONENT_REGISTER_FILE /system/etc/component_register
-	export CONTENTPIPE_REGISTER_FILE /system/etc/contentpipe_register
-	# export LD_DEBUG 1
+    # setup the global environment
+    export SHM_MOUNTPOINT /mnt/shm
+    export LIGHTSENSOR_PATH /sys/class/i2c-adapter/i2c-1/1-0044
+    export VPU_FW_PATH /system/lib/firmware/vpu
+    export CODEC_SHM_PATH /mnt/shm
+    export CORE_REGISTER_FILE /system/etc/core_register
+    export COMPONENT_REGISTER_FILE /system/etc/component_register
+    export CONTENTPIPE_REGISTER_FILE /system/etc/contentpipe_register
+    
+    # disable cursor blink for fbcon, if no splash screen support
+    write /sys/class/graphics/fbcon/cursor_blink 0
 
-	# disable cursor blink for fbcon, if no splash screen support
-	write /sys/class/graphics/fbcon/cursor_blink 0
-
-	# deattch the fbcon as hdmi hotplug conflict with fbcon
-	write /sys/class/vtconsole/vtcon1/bind 0
+    # deattch the fbcon as hdmi hotplug conflict with fbcon
+    write /sys/class/vtconsole/vtcon1/bind 0
 
 on boot
-	#write /sys/class/input/input4/threshold 3
+	write /sys/class/input/input4/threshold 3
 
 	 # bluetooth LPM
 	chmod 0220 /proc/bluetooth/sleep/lpm
@@ -107,10 +106,10 @@ on boot
 	setprop ro.ril.wake_lock_timeout 300
 
 	# Default backlight device
-	setprop hw.backlight.dev "backlight"
+	setprop hw.backlight.dev "backlight.0"
 	# Chmod/chown FSL specific sys entry
-	chown system system /sys/class/backlight/backlight/brightness
-	chmod 0660 /sys/class/backlight/backlight/brightness
+	chown system system /sys/class/backlight/backlight.0/brightness
+	chmod 0660 /sys/class/backlight/backlight.0/brightness
 
 	# Set light sensor sysfs path and light sensor threshold lux value
 	setprop ro.hardware.lightsensor "/sys/class/i2c-dev/i2c-2/device/2-0044/"
@@ -138,58 +137,53 @@ on boot
 
 	# Set GPU 3D minimum clock to 3/64
 	write /sys/bus/platform/drivers/galcore/gpu3DMinClock 3
-	
-	# Disable secure mode for adb
-	setprop ro.adb.secure 0
 
 
 on property:sys.boot_completed=1
-	# Set default CPU frequency governor
-	# Set timer 40ms, min sample 60ms,hispeed at cpufreq MAX freq in freq_table at load 40%
-	write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-	write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 40000
-	write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 60000
-	write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 40
-	#write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 792000
+# Set default CPU frequency governor
+# Set timer 40ms, min sample 60ms,hispeed at cpufreq MAX freq in freq_table at load 40%
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 40000
+    write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 60000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 40
+    #write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 792000
 
 # change interactive atrrubuties permissions when interactive is actived
 on property:sys.interactive="active"
-	chown system root /sys/devices/system/cpu/cpufreq/interactive/timer_rate
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
-	chown system root /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
-	chown system root /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-	chown system root /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-	chown system root /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
-	chown system root /sys/devices/system/cpu/cpufreq/interactive/boost
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boost
-	chown system root /sys/devices/system/cpu/cpufreq/interactive/boostpulse
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse
-	chown system root /sys/devices/system/cpu/cpufreq/interactive/input_boost
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/input_boost
-	chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
-	chown system system /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
-	chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+    chown system root /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+    chown system root /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+    chown system root /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+    chown system root /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+    chown system root /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+    chown system root /sys/devices/system/cpu/cpufreq/interactive/boost
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boost
+    chown system root /sys/devices/system/cpu/cpufreq/interactive/boostpulse
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse
+    chown system root /sys/devices/system/cpu/cpufreq/interactive/input_boost
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/input_boost
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/boostpulse_duration
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+
+# magd daemon
+service magd /system/bin/magd
+    class late_start
+    seclabel u:r:sensors:s0
+    user system
+    group input
+    oneshot
+
 
 # Set watchdog timer to 30 seconds and pet it every 10 seconds to get a 20 second margin
 service watchdogd /sbin/watchdogd 10 20
-	class core
-	seclabel u:r:watchdogd:s0
-
-on charger
-	# Enable Power modes and set the CPU Freq Sampling rates
-	write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
-	write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
-	write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000
-	write /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy 1
-	write /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor 4
-	write /sys/devices/system/cpu/cpu1/online 0
-	write /sys/devices/system/cpu/cpu2/online 0
-	write /sys/devices/system/cpu/cpu3/online 0
+    class core
+    seclabel u:r:watchdogd:s0
 
 service p2p_supplicant /system/bin/wpa_supplicant \
 	-iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -222,11 +216,6 @@ service wpa_supplicant /system/bin/wpa_supplicant \
 	disabled
 	oneshot
 
-service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
-	class main
-	disabled
-	oneshot
-
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
 	class main
 	disabled
@@ -237,10 +226,10 @@ service dhcpcd_p2p /system/bin/dhcpcd -aABKL
 	disabled
 	oneshot
 
-service iprenew_eth0 /system/bin/dhcpcd -n
-	class main
-	disabled
-	oneshot
+service dhcpcd_eth0 /system/bin/dhcpcd -ABKL
+        class main
+        disabled
+        oneshot
 
 service iprenew_wlan0 /system/bin/dhcpcd -n
 	class main
@@ -251,6 +240,11 @@ service iprenew_p2p /system/bin/dhcpcd -n
 	class main
 	disabled
 	oneshot
+
+service iprenew_eth0 /system/bin/dhcpcd -n
+        class main
+        disabled
+        oneshot
 
 # Factory serial 
 service sernd /system/bin/sernd
@@ -269,8 +263,15 @@ on fs
 	mount_all /fstab.freescale
 
 on post-fs
-	# Turn on swap
-	swapon_all /fstab.freescale
-	# Swap in only 1 page at a time
-	write /proc/sys/vm/page-cluster 0
+    # Turn on swap
+    swapon_all /fstab.freescale
+
+    # Swap in only 1 page at a time
+    write /proc/sys/vm/page-cluster 0
+
+	# log-system
+	mkdir /cache/log 0770 root root
+	mkdir /cache/log/logcat 0770 root root
+	mkdir /cache/log/kernel 0770 root root  
+	mkdir /cache/log/temp 0770 root root 
  

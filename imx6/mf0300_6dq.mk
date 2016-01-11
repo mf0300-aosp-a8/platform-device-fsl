@@ -16,9 +16,9 @@ PRODUCT_COPY_FILES += \
 	device/fsl/mf0300_6dq/init.rc:root/init.freescale.rc \
         device/fsl/mf0300_6dq/init.i.MX6Q.rc:root/init.freescale.i.MX6Q.rc \
         device/fsl/mf0300_6dq/init.i.MX6DL.rc:root/init.freescale.i.MX6DL.rc \
-	device/fsl/mf0300_6dq/init.i.MX6QP.rc:root/init.freescale.i.MX6QP.rc
-#	device/fsl/mf0300_6dq/audio_policy.conf:system/etc/audio_policy.conf \
-#	device/fsl/mf0300_6dq/audio_effects.conf:system/vendor/etc/audio_effects.conf
+	device/fsl/mf0300_6dq/init.i.MX6QP.rc:root/init.freescale.i.MX6QP.rc \
+	device/fsl/mf0300_6dq/audio_policy.conf:system/etc/audio_policy.conf \
+	device/fsl/mf0300_6dq/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 PRODUCT_COPY_FILES +=	\
 	external/linux-firmware-imx/firmware/vpu/vpu_fw_imx6d.bin:system/lib/firmware/vpu/vpu_fw_imx6d.bin 	\
@@ -49,4 +49,26 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
 	frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
 	device/fsl/mf0300_6dq/required_hardware.xml:system/etc/permissions/required_hardware.xml
-PRODUCT_PACKAGES += AudioRoute EchoPro
+
+PRODUCT_PACKAGES += \
+	eSystemInfo \
+	SpeedTest \
+	GPUTest \
+	sernd \
+	libficextjni \
+	test_sern \
+	uart-test \
+	checkfiles \
+	log-kernel \
+	log-logcat \
+	log-tools \
+	log-temp
+
+#PRODUCT_PACKAGES += \
+#	AnTuTu \
+#	EchoPro \
+#	AudioRoute \
+#	eHardwareInfo \
+#	eHardwareInfoV2 \
+#	eSystemInfo
+#	eGalaxCalibrator-1024

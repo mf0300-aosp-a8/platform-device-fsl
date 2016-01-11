@@ -49,4 +49,4 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
 	frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
 	device/fsl/mf0300_6dq/required_hardware.xml:system/etc/permissions/required_hardware.xml
-PRODUCT_PACKAGES += AudioRoute
+PRODUCT_PACKAGES += AudioRoute EchoPro

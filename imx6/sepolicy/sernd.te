@@ -1,0 +1,31 @@
+# declare sernd chinese for serialnumber domain
+type sernd, domain;
+
+# declare that it's exec file
+type sernd_exec, exec_type, file_type;
+
+# define sernd_service as service - already defined in ./service.te
+#type sernd_service, service_manager_type;
+
+# apply policies init_deamon to sernd
+init_daemon_domain(sernd)
+
+# Mark a domain as being a Binder service domain.
+# Used to allow binder IPC to the various system services.
+binder_service(sernd)
+
+# Allow domain to use Binder IPC.
+binder_use(sernd)
+
+# Allow binder IPC domain to perform sernd.
+binder_call(binderservicedomain, sernd)
+# Allow app domain to perform sernd.
+#binder_call(appdomain, sernd)
+
+allow sernd sernd_service:service_manager add;
+allow sernd system_server:binder call;
+
+# allow2policy output
+allow sernd self:capability { net_admin net_raw };
+allow sernd self:tcp_socket { create ioctl };
+allow sernd sysfs:file write;

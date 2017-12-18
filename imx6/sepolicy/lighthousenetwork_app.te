@@ -1,0 +1,55 @@
+###
+### Apps signed with the lighthousenetwork key.
+###
+
+type lighthousenetwork_app, domain;
+app_domain(lighthousenetwork_app)
+# Access the network.
+net_domain(lighthousenetwork_app)
+# Access bluetooth.
+bluetooth_domain(lighthousenetwork_app)
+# Read from /data/local/tmp or /data/data/com.android.shell.
+allow lighthousenetwork_app shell_data_file:dir search;
+allow lighthousenetwork_app shell_data_file:file { open getattr read };
+# Populate /data/app/vmdl*.tmp, /data/app-private/vmdl*.tmp files
+# created by system server.
+allow lighthousenetwork_app { apk_tmp_file apk_private_tmp_file }:dir r_dir_perms;
+allow lighthousenetwork_app { apk_tmp_file apk_private_tmp_file }:file rx_file_perms;
+allow lighthousenetwork_app apk_private_data_file:dir search;
+# ASEC
+allow lighthousenetwork_app asec_apk_file:dir create_dir_perms;
+allow lighthousenetwork_app asec_apk_file:file create_file_perms;
+
+# Access to /data/media.
+allow lighthousenetwork_app media_rw_data_file:dir create_dir_perms;
+allow lighthousenetwork_app media_rw_data_file:file create_file_perms;
+
+# Write to /cache.
+allow lighthousenetwork_app cache_file:dir create_dir_perms;
+allow lighthousenetwork_app cache_file:file create_file_perms;
+
+# Direct access to vold-mounted storage under /mnt/media_rw
+# This is a performance optimization that allows platform apps to bypass the FUSE layer
+allow lighthousenetwork_app mnt_media_rw_file:dir r_dir_perms;
+allow lighthousenetwork_app vfat:dir create_dir_perms;
+allow lighthousenetwork_app vfat:file create_file_perms;
+
+allow lighthousenetwork_app drmserver_service:service_manager find;
+allow lighthousenetwork_app mediaserver_service:service_manager find;
+allow lighthousenetwork_app persistent_data_block_service:service_manager find;
+allow lighthousenetwork_app radio_service:service_manager find;
+allow lighthousenetwork_app surfaceflinger_service:service_manager find;
+allow lighthousenetwork_app app_api_service:service_manager find;
+allow lighthousenetwork_app system_api_service:service_manager find;
+
+# allow lighthousenetwork_app to get access to serial number
+use_serialnumberservice(lighthousenetwork_app)
+# allow lighthousenetwork_app to get access to card reader
+use_cardreader(lighthousenetwork_app)
+
+# allow2audit output
+allow lighthousenetwork_app healthd_service:service_manager find;
+allow lighthousenetwork_app system_file:file execmod;
+
+allow lighthousenetwork_app lighthousenetwork_app_data_file:dir create_dir_perms;
+allow lighthousenetwork_app lighthousenetwork_app_data_file:{ file lnk_file } create_file_perms;

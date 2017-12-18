@@ -1,2 +1,8 @@
 type configfs, fs_type;
 type tracefs, fs_type;
+
+# lighthousenetwork apps files
+type lighthousenetwork_app_data_file, file_type, data_file_type, mlstrustedobject;
+
+# define serial number socket file type
+type serialnumber_socket, file_type;

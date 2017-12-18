@@ -1,0 +1,2 @@
+# allow radio to get access to serial number
+use_serialnumberservice(radio)

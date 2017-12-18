@@ -1,0 +1,3 @@
+# audit2allow output policies for lighthousenetwork_app_data_file
+allow installd lighthousenetwork_app_data_file:dir { create_dir_perms relabelfrom relabelto };
+allow installd lighthousenetwork_app_data_file:{ file lnk_file } { create_file_perms relabelfrom relabelto };

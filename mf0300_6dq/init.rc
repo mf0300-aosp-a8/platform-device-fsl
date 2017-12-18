@@ -252,11 +252,13 @@ service sernd /system/bin/sernd
 	socket serialnumber stream 666
 	user root
 	oneshot
+	seclabel u:r:sernd:s0
 
 service ChkUSBSerial /system/bin/checkfiles
 	class main
 	user root
 	oneshot
+	seclabel u:r:checkfiles:s0
 
 on fs
 	# mount ext4 partitions

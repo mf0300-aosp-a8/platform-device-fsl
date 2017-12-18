@@ -1,0 +1,29 @@
+# declare checkfiles domain
+type checkfiles, domain;
+
+# declare that it's exec file
+type checkfiles_exec, exec_type, file_type;
+
+# define checkfiles_service as service - already defined in ./service.te
+#type checkfiles_service, service_manager_type;
+
+# apply policies init_deamon to checkfiles
+init_daemon_domain(checkfiles)
+
+# Mark a domain as being a Binder service domain.
+# Used to allow binder IPC to the various system services.
+binder_service(checkfiles)
+
+# Allow domain to use Binder IPC.
+binder_use(checkfiles)
+
+# Allow binder IPC domain to perform checkfiles.
+binder_call(binderservicedomain, checkfiles)
+# Allow app domain to perform checkfiles.
+#binder_call(appdomain, checkfiles)
+
+allow checkfiles checkfiles_service:service_manager add;
+allow checkfiles system_server:binder call;
+
+# allow2audit output
+allow checkfiles sysfs:file write;

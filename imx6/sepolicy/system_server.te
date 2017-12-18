@@ -3,3 +3,11 @@ allow system_server unlabeled:sock_file {link unlink rw_file_perms};
 allow system_server system_data_file:file {relabelto rw_file_perms};
 allow system_server system_data_file:dir {relabelto rw_dir_perms};
 allow system_server system_file:file {execmod};
+
+# system server have full access to sernd and checkfiles services
+allow system_server cardreader_device:chr_file rw_file_perms;
+allow system_server serialnumber_socket:sock_file rw_file_perms;
+allow system_server sernd:unix_stream_socket { getattr getopt read write connectto };
+
+# audit2allow output
+allow system_server lighthousenetwork_app_data_file:dir getattr;

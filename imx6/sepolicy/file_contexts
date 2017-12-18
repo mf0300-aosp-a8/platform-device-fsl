@@ -26,3 +26,8 @@
 /dev/block/mmcblk[0-9]p5 		u:object_r:system_block_device:s0
 /dev/block/mmcblk[0-9]p4 		u:object_r:userdata_block_device:s0
 /dev/block/mmcblk[0-9]p6 		u:object_r:cache_block_device:s0
+
+/dev/socket/serialnumber u:object_r:serialnumber_socket:s0
+/dev/ttymxc4             u:object_r:cardreader_device:s0
+/system/bin/sernd        u:object_r:sernd_exec:s0
+/system/bin/checkfiles   u:object_r:checkfiles_exec:s0

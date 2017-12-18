@@ -1,0 +1,2 @@
+# selinux app domain context file type
+user=_app seinfo=lighthousenetwork domain=lighthousenetwork_app type=lighthousenetwork_app_data_file

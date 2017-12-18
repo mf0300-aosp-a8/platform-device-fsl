@@ -1,0 +1,3 @@
+# execution context for services
+sernd      u:object_r:sernd_service:s0
+checkfiles u:object_r:checkfiles_service:s0

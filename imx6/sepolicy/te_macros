@@ -1,0 +1,19 @@
+# enable for user build
+define(`userdebug_or_eng', ifelse(target_build_variant, `eng', $1, ifelse(target_build_variant, `userdebug', $1, ifelse(target_build_variant, `user', $1))))
+
+# define new macroses for easy use
+###########################################
+# use_serialnumberservice(domain)
+# Ability to use operations with serial number socket
+# that use sernd chinese service
+define(`use_serialnumberservice', `
+  allow $1 serialnumber_socket:sock_file { getattr read write };
+  allow $1 sernd:unix_stream_socket { getattr getopt read write connectto };
+')
+
+###########################################
+# use_cardreader(domain)
+# Ability to read from cardreader_device
+define(`use_cardreader', `
+  allow $1 cardreader_device:chr_file { open getattr read write ioctl };
+')

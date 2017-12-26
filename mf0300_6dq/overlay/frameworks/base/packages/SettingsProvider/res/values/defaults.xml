@@ -22,5 +22,5 @@
     <!-- Disable GPS Provider-->
     <string name="def_location_providers_allowed" translatable="false"></string>
     <!-- Enable installation of the non-market apps -->
-    <bool name="def_install_non_market_apps">true</bool>
+    <bool name="def_install_non_market_apps">false</bool>
 </resources>

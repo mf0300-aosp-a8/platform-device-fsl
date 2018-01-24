@@ -1,0 +1,10 @@
+
+# AMPAK GB86302I
+# BCM4330
+
+broadcom/
+├── fw_bcm4330b2_ag_apsta.bin
+├── fw_bcm4330b2_ag.bin
+├── fw_bcm4330b2_ag_p2p.bin
+├── nvram_gb86302i.txt
+└── README

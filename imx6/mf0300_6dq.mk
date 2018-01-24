@@ -29,6 +29,18 @@ $(call inherit-product, build/target/product/verity.mk)
 
 # GPU files
 
+# mod 4.4
+# AMPAK BROADCOM BCM4330 firmware and configuration files.
+PRODUCT_COPY_FILES += \
+	device/fsl/mf0300_6dq/broadcom/fw_bcm4330b2_ag.bin:system/etc/firmware/fw_bcmdhd.bin \
+	device/fsl/mf0300_6dq/broadcom/fw_bcm4330b2_ag_p2p.bin:system/etc/firmware/fw_bcmdhd_p2p.bin \
+	device/fsl/mf0300_6dq/broadcom/fw_bcm4330b2_ag_apsta.bin:system/etc/firmware/fw_bcmdhd_apsta.bin \
+	device/fsl/mf0300_6dq/broadcom/nvram_gb86302i.txt:system/etc/firmware/nvram.txt \
+	device/fsl/mf0300_6dq/broadcom/bcm4330b2.hcd:system/etc/firmware/bcm4330b2.hcd \
+	hardware/broadcom/wlan/bcmdhd/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+	hardware/broadcom/wlan/bcmdhd/config/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+# mod 4.4 end
+
 DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
 
 PRODUCT_CHARACTERISTICS := tablet

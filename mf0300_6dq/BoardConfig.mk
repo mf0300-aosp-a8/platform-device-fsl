@@ -45,3 +45,36 @@ TARGET_BOOTLOADER_CONFIG := mx6qmf0300_xga_defconfig
 BOARD_SEPOLICY_DIRS := \
        device/fsl/imx6/sepolicy
 
+# mod 4.4
+# Wifi
+#
+BOARD_WLAN_VENDOR := BROADCOM
+#for broadcom
+ifeq ($(BOARD_WLAN_VENDOR),BROADCOM)
+	WIFI_DRIVER_FW_PATH_STA          := "/system/etc/firmware/fw_bcmdhd.bin"
+	WIFI_DRIVER_FW_PATH_AP           := "/system/etc/firmware/fw_bcmdhd_apsta.bin"
+	WIFI_DRIVER_FW_PATH_P2P          := "/system/etc/firmware/fw_bcmdhd_p2p.bin"
+	WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/bcmdhd/parameters/firmware_path"
+	BOARD_WLAN_DEVICE                := UNITE
+	BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
+	BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
+	WIFI_DRIVER_MODULE_NAME          := "bcmdhd"
+	WIFI_DRIVER_MODULE_ARG           := "iface_name=wlan firmware_path=/system/etc/firmware/fw_bcmdhd.bin nvram_path=/system/etc/firmware/nvram.txt"
+endif
+
+WPA_SUPPLICANT_VERSION      := VER_0_8_UNITE
+HOSTAPD_VERSION             := VER_0_8_X
+BOARD_HAVE_BLUETOOTH_BCM    := true
+
+BOARD_WPA_SUPPLICANT_DRIVER := NL80211
+BOARD_HOSTAPD_DRIVER        := NL80211
+WIFI_TEST_INTERFACE         := "sta"
+
+BOARD_MODEM_VENDOR          := AMAZON
+
+USE_ATHR_GPS_HARDWARE       := false
+USE_QEMU_GPS_HARDWARE       := false
+
+# atheros 3k BT
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/fsl/mf0300_6dq/bluetooth
+# mod 4.4 end

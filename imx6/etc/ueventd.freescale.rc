@@ -1,6 +1,5 @@
 /dev/pmem_gpu             0660   system     graphics
 /dev/ttymxc1              0666   bluetooth  net_bt_stack
-/dev/ttymxc2              0660   bluetooth  net_bt_stack
 /dev/ttymxc4              0660   bluetooth  net_bt_stack
 /dev/snd/*                0660   system     audio
 /dev/ttyUSB*              0666   radio      radio
@@ -18,8 +17,13 @@
 /dev/graphics/fb0         0660   system     graphics
 /dev/watchdog             0660   system     root
 /dev/ir                   0660   system     system
-/dev/mma8x5x              0640   compass     system
+/dev/mma8x5x              0640   compass    system
 /dev/caam_kb              0660   system     system
+/dev/ttymxc2              0660   system     gps
+/dev/ttya0                0660   system     gps
+/dev/ptya0                0660   system     gps
+/dev/ttya1                0660   system     gps
+/dev/ptya1                0660   system     gps
 
 # sysfs properties
 /sys/devices/virtual/input/input*   name        0660  root   input

@@ -6,6 +6,7 @@ include device/fsl/imx6/soc/imx6dq.mk
 include device/fsl/mf0300_6dq/build_id.mk
 include device/fsl/imx6/BoardConfigCommon.mk
 include device/fsl-proprietary/gpu-viv/fsl-gpu.mk
+include external/boringssl/flavor.mk
 # default target for EXT4
 BUILD_TARGET_FS ?= ext4
 include device/fsl/imx6/imx6_target_fs.mk
@@ -74,6 +75,10 @@ BOARD_MODEM_VENDOR          := AMAZON
 
 USE_ATHR_GPS_HARDWARE       := false
 USE_QEMU_GPS_HARDWARE       := false
+
+# force copy dhcpcd config
+PRODUCT_COPY_FILES +=	\
+	hardware/broadcom/wlan/bcmdhd/config/android_dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf
 
 # atheros 3k BT
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/fsl/mf0300_6dq/bluetooth

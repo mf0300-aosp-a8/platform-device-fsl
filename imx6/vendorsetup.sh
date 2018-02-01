@@ -1,7 +1,7 @@
 
 add_lunch_combo sabresd_6dq-eng
 add_lunch_combo sabresd_6dq-user
-add_lunch_combo md0300_6dq-eng
+add_lunch_combo mf0300_6dq-eng
 add_lunch_combo mf0300_6dq-user
 add_lunch_combo sabreauto_6q-eng
 add_lunch_combo sabreauto_6q-user

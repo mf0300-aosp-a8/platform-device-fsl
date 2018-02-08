@@ -1,3 +1,4 @@
 # define new services for manipulate by service_manager
 type sernd_service,      service_manager_type;
 type checkfiles_service, service_manager_type;
+type egtouchd_service,      service_manager_type;

@@ -320,6 +320,13 @@ service ChkUSBSerial /system/bin/checkfiles
 	oneshot
 	seclabel u:r:checkfiles:s0
 
+# service for WXGA 13-inch tablet Echo POS
+service egtouchd /system/bin/egtouchd
+	class main
+	user root
+	group root
+	oneshot
+
 on fs
 	# mount ext4 partitions
 	mount_all /fstab.freescale

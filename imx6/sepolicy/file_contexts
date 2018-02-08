@@ -30,6 +30,7 @@
 /dev/socket/serialnumber u:object_r:serialnumber_socket:s0
 /dev/ttymxc4             u:object_r:cardreader_device:s0
 /system/bin/sernd        u:object_r:sernd_exec:s0
+/system/bin/egtouchd        u:object_r:egtouchd_exec:s0
 /system/bin/checkfiles   u:object_r:checkfiles_exec:s0
 /sys/class/rfkill/rfkill[0-9]*/state -- u:object_r:sysfs_bluetooth_writable:s0
 /sys/class/rfkill/rfkill[0-9]*/type -- u:object_r:sysfs_bluetooth_writable:s0

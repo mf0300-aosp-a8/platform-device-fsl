@@ -40,6 +40,11 @@ PRODUCT_COPY_FILES += \
 	hardware/broadcom/wlan/bcmdhd/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
 	hardware/broadcom/wlan/bcmdhd/config/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 # mod 4.4 end
+# touch service for Echo POS WXGA (1366x768)
+PRODUCT_COPY_FILES += \
+	device/fsl/imx6/eeti/eGTouchD:system/bin/egtouchd \
+	device/fsl/imx6/eeti/eGTouchA.ini:data/eGTouchA.ini \
+	device/fsl/imx6/eeti/eGalaxTouch_VirtualDevice.idc:system/usr/idc/eGalaxTouch_VirtualDevice.idc
 
 DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
 
@@ -74,7 +79,8 @@ PRODUCT_PACKAGES += \
 	log-kernel \
 	log-logcat \
 	log-tools \
-	log-temp
+	log-temp \
+	eGalaxCalibrator
 
 #PRODUCT_PACKAGES += \
 #	AnTuTu \

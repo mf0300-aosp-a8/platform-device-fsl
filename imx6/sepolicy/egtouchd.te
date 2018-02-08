@@ -1,0 +1,41 @@
+# declare egtouchd chinese for serialnumber domain
+type egtouchd, domain;
+
+# declare that it's exec file
+type egtouchd_exec, exec_type, file_type;
+
+# define egtouchd_service as service - already defined in ./service.te
+#type egtouchd_service, service_manager_type;
+
+# apply policies init_deamon to egtouchd
+init_daemon_domain(egtouchd)
+
+# Mark a domain as being a Binder service domain.
+# Used to allow binder IPC to the various system services.
+binder_service(egtouchd)
+
+# Allow domain to use Binder IPC.
+binder_use(egtouchd)
+
+# Allow binder IPC domain to perform egtouchd.
+binder_call(binderservicedomain, egtouchd)
+# Allow app domain to perform egtouchd.
+#binder_call(appdomain, egtouchd)
+
+allow egtouchd egtouchd_service:service_manager add;
+allow egtouchd system_server:binder call;
+
+# autdit2allow output
+allow egtouchd device:chr_file { read write ioctl open };
+allow egtouchd input_device:chr_file { getattr setattr };
+allow egtouchd input_device:dir { search read open };
+allow egtouchd netd:dir search;
+allow egtouchd netd:file { read getattr open };
+allow egtouchd netd:process signull;
+allow egtouchd self:capability { fsetid dac_override };
+allow egtouchd shell_exec:file { read execute open execute_no_trans };
+allow egtouchd system_data_file:dir { read write open add_name remove_name };
+allow egtouchd system_data_file:fifo_file { create read write getattr setattr open };
+allow egtouchd system_data_file:file { write create unlink open };
+allow egtouchd system_file:file execute_no_trans;
+allow egtouchd uhid_device:chr_file { write ioctl open };

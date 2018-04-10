@@ -7,6 +7,7 @@ PRODUCT_MANUFACTURER := Freescale
 
 # Android infrastructures
 PRODUCT_PACKAGES += \
+	TeamViewerQS				\
 	LiveWallpapers				\
 	LiveWallpapersPicker			\
 	MagicSmokeWallpapers			\

@@ -23,4 +23,6 @@
     <string name="def_location_providers_allowed" translatable="false"></string>
     <!-- Enable installation of the non-market apps -->
     <bool name="def_install_non_market_apps">false</bool>
+    <!-- Enable UI touch sounds -->
+    <bool name="def_sound_effects_enabled">true</bool>
 </resources>

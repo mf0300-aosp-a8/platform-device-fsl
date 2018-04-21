@@ -39,3 +39,6 @@ allow egtouchd system_data_file:fifo_file { create read write getattr setattr op
 allow egtouchd system_data_file:file { write create unlink open };
 allow egtouchd system_file:file execute_no_trans;
 allow egtouchd uhid_device:chr_file { write ioctl open };
+allow egtouchd su:dir search;
+allow egtouchd su:file { read getattr open };
+allow egtouchd su:process signull;

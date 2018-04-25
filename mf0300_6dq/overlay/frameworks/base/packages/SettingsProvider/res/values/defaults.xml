@@ -25,4 +25,6 @@
     <bool name="def_install_non_market_apps">false</bool>
     <!-- Enable UI touch sounds -->
     <bool name="def_sound_effects_enabled">true</bool>
+    <!-- Show onscreen keyboard even if hardware keyboard is connected -->
+    <bool name="def_show_ime_with_hard_keyboard">true</bool>
 </resources>

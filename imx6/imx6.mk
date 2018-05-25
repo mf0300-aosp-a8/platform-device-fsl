@@ -362,6 +362,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fsck.f2fs mkfs.f2fs
 
+ifeq ($(TARGET_BUILD_VARIANT),eng)
+	PRODUCT_COPY_FILES +=	\
+		device/fsl/imx6/etc/ota-eng.conf:system/etc/ota.conf
+else
+	PRODUCT_COPY_FILES +=	\
+		device/fsl/imx6/etc/ota.conf:system/etc/ota.conf
+endif
+
 PRODUCT_COPY_FILES +=	\
 	device/fsl/common/input/Dell_Dell_USB_Keyboard.kl:system/usr/keylayout/Dell_Dell_USB_Keyboard.kl \
 	device/fsl/common/input/Dell_Dell_USB_Keyboard.idc:system/usr/idc/Dell_Dell_USB_Keyboard.idc \
@@ -373,7 +381,6 @@ PRODUCT_COPY_FILES +=	\
 	device/fsl/imx6/etc/init.usb.rc:root/init.freescale.usb.rc \
 	device/fsl/imx6/etc/ueventd.freescale.rc:root/ueventd.freescale.rc \
 	device/fsl/imx6/etc/ppp/init.gprs-pppd:system/etc/ppp/init.gprs-pppd \
-	device/fsl/imx6/etc/ota.conf:system/etc/ota.conf \
         device/fsl/imx6/init.recovery.freescale.rc:root/init.recovery.freescale.rc \
 	device/fsl/common/display/display_mode_fb0.conf:system/etc/display_mode_fb0.conf \
 	device/fsl/common/display/display_mode_fb2.conf:system/etc/display_mode_fb2.conf \

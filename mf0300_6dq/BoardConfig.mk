@@ -14,15 +14,9 @@ include device/fsl/imx6/imx6_target_fs.mk
 
 ifneq ($(BUILD_TARGET_FS),f2fs)
 # build for ext4
-ifeq ($(PRODUCT_IMX_CAR),true)
-TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab.freescale.car
-PRODUCT_COPY_FILES +=	\
-	device/fsl/mf0300_6dq/fstab.freescale.car:root/fstab.freescale
-else
 TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab.freescale
 PRODUCT_COPY_FILES +=	\
 	device/fsl/mf0300_6dq/fstab.freescale:root/fstab.freescale
-endif # PRODUCT_IMX_CAR
 else
 TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab-f2fs.freescale
 # build for f2fs
@@ -31,13 +25,8 @@ PRODUCT_COPY_FILES +=	\
 endif # BUILD_TARGET_FS
 
 # Vendor Interface Manifest
-ifeq ($(PRODUCT_IMX_CAR),true)
-PRODUCT_COPY_FILES += \
-    device/fsl/mf0300_6dq/manifest_car.xml:vendor/manifest.xml
-else
 PRODUCT_COPY_FILES += \
     device/fsl/mf0300_6dq/manifest.xml:vendor/manifest.xml
-endif
 
 TARGET_BOOTLOADER_BOARD_NAME := SABRESD
 PRODUCT_MODEL := SABRESD-MX6DQ
@@ -119,12 +108,6 @@ TARGET_BOARD_DTS_CONFIG := imx6q:imx6q-sabresd.dtb imx6dl:imx6dl-sabresd.dtb imx
 BOARD_SEPOLICY_DIRS := \
        device/fsl/imx6/sepolicy \
        device/fsl/mf0300_6dq/sepolicy
-
-ifeq ($(PRODUCT_IMX_CAR),true)
-BOARD_SEPOLICY_DIRS += \
-     packages/services/Car/car_product/sepolicy \
-     device/generic/car/common/sepolicy
-endif
 
 PRODUCT_COPY_FILES +=	\
        device/fsl/mf0300_6dq/ueventd.freescale.rc:root/ueventd.freescale.rc

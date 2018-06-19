@@ -12,17 +12,10 @@ endif
 BUILD_TARGET_FS ?= ext4
 include device/fsl/imx6/imx6_target_fs.mk
 
-ifneq ($(BUILD_TARGET_FS),f2fs)
 # build for ext4
 TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab.freescale
 PRODUCT_COPY_FILES +=	\
 	device/fsl/mf0300_6dq/fstab.freescale:root/fstab.freescale
-else
-TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab-f2fs.freescale
-# build for f2fs
-PRODUCT_COPY_FILES +=	\
-	device/fsl/mf0300_6dq/fstab-f2fs.freescale:root/fstab.freescale
-endif # BUILD_TARGET_FS
 
 # Vendor Interface Manifest
 PRODUCT_COPY_FILES += \

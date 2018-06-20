@@ -52,30 +52,8 @@ TARGET_SELECT_KEY := 28
 
 # we don't support sparse image.
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
-# uncomment below lins if use NAND
-#TARGET_USERIMAGES_USE_UBIFS = true
-
-
-ifeq ($(TARGET_USERIMAGES_USE_UBIFS),true)
-UBI_ROOT_INI := device/fsl/mf0300_6dq/ubi/ubinize.ini
-TARGET_MKUBIFS_ARGS := -m 4096 -e 516096 -c 4096 -x none
-TARGET_UBIRAW_ARGS := -m 4096 -p 512KiB $(UBI_ROOT_INI)
-endif
-
-ifeq ($(TARGET_USERIMAGES_USE_UBIFS),true)
-ifeq ($(TARGET_USERIMAGES_USE_EXT4),true)
-$(error "TARGET_USERIMAGES_USE_UBIFS and TARGET_USERIMAGES_USE_EXT4 config open in same time, please only choose one target file system image")
-endif
-endif
 
 BOARD_KERNEL_CMDLINE := console=ttymxc0,115200 init=/init video=mxcfb0:dev=ldb,fbpix=RGB32,bpp=32 video=mxcfb1:off video=mxcfb2:off video=mxcfb3:off vmalloc=128M androidboot.console=ttymxc0 consoleblank=0 androidboot.hardware=freescale cma=448M galcore.contiguousSize=33554432
-
-ifeq ($(TARGET_USERIMAGES_USE_UBIFS),true)
-#UBI boot command line.
-# Note: this NAND partition table must align with MFGTool's config.
-BOARD_KERNEL_CMDLINE +=  mtdparts=gpmi-nand:16m(bootloader),16m(bootimg),128m(recovery),-(root) gpmi_debug_init ubi.mtd=3
-endif
-
 
 # Broadcom BCM4339 BT
 BOARD_HAVE_BLUETOOTH_BCM := true

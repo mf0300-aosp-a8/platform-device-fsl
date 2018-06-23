@@ -73,7 +73,12 @@ IMX_CAMERA_HAL_V3 := true
 #define consumer IR HAL support
 IMX6_CONSUMER_IR_HAL := false
 
-TARGET_BOOTLOADER_CONFIG := imx6q:mx6qsabresdandroid_config imx6dl:mx6dlsabresdandroid_config imx6q-ldo:mx6qsabresdandroid_config imx6qp:mx6qpsabresdandroid_config imx6qp-ldo:mx6qpsabresdandroid_config
+TARGET_BOOTLOADER_CONFIG := \
+	imx6q-mf0300-xga:mx6qmf0300android_xga_defconfig \
+	imx6q-mf0300-wxga:mx6qmf0300android_wxga_defconfig \
+	imx6q-mf0300-sdcardflasher:mx6qmf0300android_sdcardflasher_defconfig \
+	imx6q-mf0300-mfg:mx6qmf0300android_mfg_defconfig
+
 TARGET_BOARD_DTS_CONFIG := \
 	imx6q-mf0300-xga:imx6q-mf0300-xga.dtb \
 	imx6q-mf0300-wxga:imx6q-mf0300-wxga.dtb

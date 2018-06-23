@@ -73,6 +73,9 @@ IMX_CAMERA_HAL_V3 := true
 #define consumer IR HAL support
 IMX6_CONSUMER_IR_HAL := false
 
+TARGET_KERNEL_DEFCONF := \
+	imx_v7_mf0300_android_defconfig
+
 TARGET_BOOTLOADER_CONFIG := \
 	imx6q-mf0300-xga:mx6qmf0300android_xga_defconfig \
 	imx6q-mf0300-wxga:mx6qmf0300android_wxga_defconfig \

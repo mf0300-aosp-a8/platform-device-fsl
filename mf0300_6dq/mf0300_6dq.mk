@@ -14,7 +14,7 @@ $(shell touch device/fsl/sabresd_6dq/fstab.freescale)
 endif
 
 # Overrides
-PRODUCT_NAME := sabresd_6dq
+PRODUCT_NAME := mf0300_6dq
 PRODUCT_DEVICE := sabresd_6dq
 
 PRODUCT_COPY_FILES += \

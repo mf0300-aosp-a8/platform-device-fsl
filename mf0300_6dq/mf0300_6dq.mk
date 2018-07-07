@@ -15,7 +15,7 @@ endif
 
 # Overrides
 PRODUCT_NAME := mf0300_6dq
-PRODUCT_DEVICE := sabresd_6dq
+PRODUCT_DEVICE := mf0300_6dq
 
 PRODUCT_COPY_FILES += \
 	device/fsl/sabresd_6dq/init.rc:root/init.freescale.rc \

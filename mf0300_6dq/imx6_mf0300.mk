@@ -325,6 +325,10 @@ PRODUCT_COPY_FILES +=	\
     $(FSL_PROPRIETARY_PATH)/fsl-proprietary/media-profile/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     $(FSL_PROPRIETARY_PATH)/fsl-proprietary/media-profile/media_profiles_720p.xml:system/etc/media_profiles_720p.xml \
     
+PRODUCT_COPY_FILES += \
+	$(IMX_FIRMWARE_PATH)/imx-firmware/brcm/GB86302I_BCM4330/bcm4330b2.hcd:vendor/firmware/bcm/GB86302I_BCM4330/bcm4330b2.hcd \
+	$(IMX_FIRMWARE_PATH)/imx-firmware/brcm/GB86302I_BCM4330/fw_bcm4330b2_ag.bin:vendor/firmware/bcm/GB86302I_BCM4330/fw_bcm4330b2_ag.bin \
+	$(IMX_FIRMWARE_PATH)/imx-firmware/brcm/GB86302I_BCM4330/fw_bcm4330b2_ag_apsta.bin:vendor/firmware/bcm/GB86302I_BCM4330/fw_bcm4330b2_ag_apsta.bin \
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

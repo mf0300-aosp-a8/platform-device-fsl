@@ -2,7 +2,7 @@
 # It will inherit from FSL core product which in turn inherit from Google generic
 
 -include device/fsl/common/imx_path/ImxPathConfig.mk
-$(call inherit-product, device/fsl/imx6/imx6.mk)
+$(call inherit-product, device/fsl/mf0300_6dq/imx6_mf0300.mk)
 $(call inherit-product-if-exists,vendor/google/products/gms.mk)
 
 ifneq ($(wildcard device/fsl/mf0300_6dq/fstab.freescale),)

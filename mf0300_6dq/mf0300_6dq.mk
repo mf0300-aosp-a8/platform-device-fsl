@@ -5,12 +5,12 @@
 $(call inherit-product, device/fsl/imx6/imx6.mk)
 $(call inherit-product-if-exists,vendor/google/products/gms.mk)
 
-ifneq ($(wildcard device/fsl/sabresd_6dq/fstab_nand.freescale),)
-$(shell touch device/fsl/sabresd_6dq/fstab_nand.freescale)
+ifneq ($(wildcard device/fsl/mf0300_6dq/fstab_nand.freescale),)
+$(shell touch device/fsl/mf0300_6dq/fstab_nand.freescale)
 endif
 
-ifneq ($(wildcard device/fsl/sabresd_6dq/fstab.freescale),)
-$(shell touch device/fsl/sabresd_6dq/fstab.freescale)
+ifneq ($(wildcard device/fsl/mf0300_6dq/fstab.freescale),)
+$(shell touch device/fsl/mf0300_6dq/fstab.freescale)
 endif
 
 # Overrides
@@ -18,19 +18,19 @@ PRODUCT_NAME := mf0300_6dq
 PRODUCT_DEVICE := mf0300_6dq
 
 PRODUCT_COPY_FILES += \
-	device/fsl/sabresd_6dq/init.rc:root/init.freescale.rc \
-	device/fsl/sabresd_6dq/init.imx6q.rc:root/init.freescale.imx6q.rc \
-	device/fsl/sabresd_6dq/init.imx6dl.rc:root/init.freescale.imx6dl.rc \
-	device/fsl/sabresd_6dq/init.imx6qp.rc:root/init.freescale.imx6qp.rc \
+	device/fsl/mf0300_6dq/init.rc:root/init.freescale.rc \
+	device/fsl/mf0300_6dq/init.imx6q.rc:root/init.freescale.imx6q.rc \
+	device/fsl/mf0300_6dq/init.imx6dl.rc:root/init.freescale.imx6dl.rc \
+	device/fsl/mf0300_6dq/init.imx6qp.rc:root/init.freescale.imx6qp.rc \
 
-PRODUCT_COPY_FILES += device/fsl/sabresd_6dq/init.freescale.emmc.rc:root/init.freescale.emmc.rc
-PRODUCT_COPY_FILES += device/fsl/sabresd_6dq/init.freescale.sd.rc:root/init.freescale.sd.rc
+PRODUCT_COPY_FILES += device/fsl/mf0300_6dq/init.freescale.emmc.rc:root/init.freescale.emmc.rc
+PRODUCT_COPY_FILES += device/fsl/mf0300_6dq/init.freescale.sd.rc:root/init.freescale.sd.rc
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \
-	device/fsl/sabresd_6dq/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
-	device/fsl/sabresd_6dq/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+	device/fsl/mf0300_6dq/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
+	device/fsl/mf0300_6dq/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
 	frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
 	frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
 	frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
@@ -47,14 +47,14 @@ PRODUCT_COPY_FILES +=	\
 
 # GPU files
 
-DEVICE_PACKAGE_OVERLAYS := device/fsl/sabresd_6dq/overlay
+DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
 
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_AAPT_CONFIG += xlarge large tvdpi hdpi xhdpi
 
 PRODUCT_COPY_FILES += \
-	device/fsl/sabresd_6dq/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
+	device/fsl/mf0300_6dq/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
 	frameworks/native/data/etc/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
 	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -66,7 +66,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
 	frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
-	device/fsl/sabresd_6dq/required_hardware.xml:system/etc/permissions/required_hardware.xml
+	device/fsl/mf0300_6dq/required_hardware.xml:system/etc/permissions/required_hardware.xml
 
 PRODUCT_COPY_FILES += \
     $(FSL_PROPRIETARY_PATH)/fsl-proprietary/gpu-viv/lib/egl/egl.cfg:system/lib/egl/egl.cfg

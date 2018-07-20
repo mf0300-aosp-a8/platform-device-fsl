@@ -58,8 +58,6 @@ PRODUCT_PACKAGES += freescale-extended 		\
 PRODUCT_PACKAGES += \
 	bt_vendor.conf	\
 	bcmdhd.cal		\
-	fw_bcmdhd.bin	\
-	fw_bcmdhd_apsta.bin
  
 # Debug utils
 PRODUCT_PACKAGES += \

@@ -57,7 +57,6 @@ PRODUCT_PACKAGES += freescale-extended 		\
 # Broadcom firmwares
 PRODUCT_PACKAGES += \
 	bt_vendor.conf	\
-	bcmdhd.cal		\
  
 # Debug utils
 PRODUCT_PACKAGES += \

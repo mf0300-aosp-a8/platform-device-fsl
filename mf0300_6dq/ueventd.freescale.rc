@@ -50,4 +50,4 @@
 /sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 int_lt_lux 0660 system system
 /sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 int_ht_lux 0660 system system
 /sys/devices/platform/mxc_dvfs_core.0 enable 0660 system system
-/sys/devices/platform/busfreq.0 enable 0660 system system
+/sys/devices/soc0/soc/soc\:busfreq enable 0660 system system

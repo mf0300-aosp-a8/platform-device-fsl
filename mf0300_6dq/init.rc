@@ -101,6 +101,9 @@ on boot
     chown bluetooth bluetooth /proc/bluetooth/sleep/btwake
     chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
+    setprop ro.bt.bdaddr_path "/data/misc/bluedroid/bdaddr"
+    chown bluetooth bluetooth /data/misc/bluedroid/bdaddr
+    chmod 0660 /data/misc/bluedroid/bdaddr
 
     # Set rotation to 270 to cofigure as portrait mode
     setprop ro.sf.hwrotation 0

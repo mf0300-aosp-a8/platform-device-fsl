@@ -4,3 +4,5 @@
 
 type shift4_app, domain;
 app_domain(shift4_app)
+
+net_domain(shift4_app)

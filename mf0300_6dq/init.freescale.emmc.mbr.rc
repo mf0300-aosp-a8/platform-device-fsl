@@ -1,0 +1,7 @@
+on init
+    # link emmc node to /dev/block/by-name
+    symlink /dev/block/platform/soc0/soc/2100000.aips-bus/219c000.usdhc              /dev/block/mmcblk3
+    symlink /dev/block/platform/soc0/soc/2100000.aips-bus/219c000.usdhc/mmcblk3boot0 /dev/block/mmcblk3boot0
+
+    # Load persistent dm-verity state
+    verity_load_state

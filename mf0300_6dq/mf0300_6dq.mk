@@ -22,6 +22,20 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += device/fsl/mf0300_6dq/init.freescale.emmc.rc:root/init.freescale.emmc.rc
 PRODUCT_COPY_FILES += device/fsl/mf0300_6dq/init.freescale.sd.rc:root/init.freescale.sd.rc
 
+
+# Default target partition table is gpt
+# else - mbr
+BUILD_TARGET_PARTITION_TABLE ?= gpt
+
+ifeq ($(BUILD_TARGET_PARTITION_TABLE),gpt)
+    # Default gpt
+    BOARD_BPT_INPUT_FILES = device/fsl/mf0300_6dq/partition/device-partitions-14.6GB.bpt
+else
+    BOARD_BPT_INPUT_FILES =
+endif
+# Force no additional partition table strategies
+ADDITION_BPT_PARTITION =
+
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_COPY_FILES += \

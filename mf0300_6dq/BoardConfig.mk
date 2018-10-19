@@ -96,10 +96,6 @@ BOARD_SEPOLICY_DIRS := \
 PRODUCT_COPY_FILES +=	\
        device/fsl/mf0300_6dq/ueventd.freescale.rc:root/ueventd.freescale.rc
 
-# Support gpt
-BOARD_BPT_INPUT_FILES = device/fsl/mf0300_6dq/partition/device-partitions-14.6GB.bpt
-ADDITION_BPT_PARTITION =
-
 # Vendor seccomp policy files for media components:
 PRODUCT_COPY_FILES += \
        device/fsl/mf0300_6dq/seccomp/mediacodec-seccomp.policy:vendor/etc/seccomp_policy/mediacodec.policy \

@@ -24,6 +24,7 @@ PRODUCT_COPY_FILES += \
 BUILD_TARGET_PARTITION_TABLE ?= gpt
 
 PRODUCT_COPY_FILES += \
+    device/fsl/mf0300_6dq/ueventd.freescale.$(BUILD_TARGET_PARTITION_TABLE).rc:root/ueventd.freescale.rc \
     device/fsl/mf0300_6dq/init.freescale.sd.$(BUILD_TARGET_PARTITION_TABLE).rc:root/init.freescale.sd.rc \
     device/fsl/mf0300_6dq/init.freescale.emmc.$(BUILD_TARGET_PARTITION_TABLE).rc:root/init.freescale.emmc.rc
 

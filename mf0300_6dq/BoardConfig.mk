@@ -93,9 +93,6 @@ BOARD_SEPOLICY_DIRS := \
        device/fsl/imx6/sepolicy \
        device/fsl/mf0300_6dq/sepolicy
 
-PRODUCT_COPY_FILES +=	\
-       device/fsl/mf0300_6dq/ueventd.freescale.rc:root/ueventd.freescale.rc
-
 # Vendor seccomp policy files for media components:
 PRODUCT_COPY_FILES += \
        device/fsl/mf0300_6dq/seccomp/mediacodec-seccomp.policy:vendor/etc/seccomp_policy/mediacodec.policy \

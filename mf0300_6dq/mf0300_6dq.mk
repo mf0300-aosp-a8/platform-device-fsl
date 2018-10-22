@@ -19,14 +19,12 @@ PRODUCT_COPY_FILES += \
 	device/fsl/mf0300_6dq/init.imx6dl.rc:root/init.freescale.imx6dl.rc \
 	device/fsl/mf0300_6dq/init.imx6qp.rc:root/init.freescale.imx6qp.rc \
 
-PRODUCT_COPY_FILES += device/fsl/mf0300_6dq/init.freescale.sd.rc:root/init.freescale.sd.rc
-
-
 # Default target partition table is gpt
 # else - mbr
 BUILD_TARGET_PARTITION_TABLE ?= gpt
 
 PRODUCT_COPY_FILES += \
+    device/fsl/mf0300_6dq/init.freescale.sd.$(BUILD_TARGET_PARTITION_TABLE).rc:root/init.freescale.sd.rc \
     device/fsl/mf0300_6dq/init.freescale.emmc.$(BUILD_TARGET_PARTITION_TABLE).rc:root/init.freescale.emmc.rc
 
 ifeq ($(BUILD_TARGET_PARTITION_TABLE),gpt)

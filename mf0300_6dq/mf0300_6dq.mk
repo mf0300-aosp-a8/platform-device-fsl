@@ -5,10 +5,6 @@
 $(call inherit-product, device/fsl/mf0300_6dq/imx6_mf0300.mk)
 $(call inherit-product-if-exists,vendor/google/products/gms.mk)
 
-ifneq ($(wildcard device/fsl/mf0300_6dq/fstab.freescale),)
-$(shell touch device/fsl/mf0300_6dq/fstab.freescale)
-endif
-
 # Overrides
 PRODUCT_NAME := mf0300_6dq
 PRODUCT_DEVICE := mf0300_6dq
@@ -24,6 +20,7 @@ PRODUCT_COPY_FILES += \
 BUILD_TARGET_PARTITION_TABLE ?= gpt
 
 PRODUCT_COPY_FILES += \
+    device/fsl/mf0300_6dq/fstab.freescale.$(BUILD_TARGET_PARTITION_TABLE):root/fstab.freescale \
     device/fsl/mf0300_6dq/ueventd.freescale.$(BUILD_TARGET_PARTITION_TABLE).rc:root/ueventd.freescale.rc \
     device/fsl/mf0300_6dq/init.freescale.sd.$(BUILD_TARGET_PARTITION_TABLE).rc:root/init.freescale.sd.rc \
     device/fsl/mf0300_6dq/init.freescale.emmc.$(BUILD_TARGET_PARTITION_TABLE).rc:root/init.freescale.emmc.rc

@@ -88,6 +88,7 @@ TARGET_BOARD_DTS_CONFIG := \
 	imx6q-mf0300-wxga:imx6q-mf0300-wxga.dtb
 
 BOARD_SEPOLICY_DIRS := \
+       out/target/product/mf0300_6dq/sepolicy \
        device/fsl/imx6/sepolicy \
        device/fsl/mf0300_6dq/sepolicy
 

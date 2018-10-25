@@ -20,6 +20,7 @@ PRODUCT_COPY_FILES += \
 BUILD_TARGET_PARTITION_TABLE ?= gpt
 
 PRODUCT_COPY_FILES += \
+    device/fsl/mf0300_6dq/sepolicy/file_contexts.$(BUILD_TARGET_PARTITION_TABLE):sepolicy/file_contexts \
     device/fsl/mf0300_6dq/fstab.freescale.$(BUILD_TARGET_PARTITION_TABLE):root/fstab.freescale \
     device/fsl/mf0300_6dq/ueventd.freescale.$(BUILD_TARGET_PARTITION_TABLE).rc:root/ueventd.freescale.rc \
     device/fsl/mf0300_6dq/init.freescale.sd.$(BUILD_TARGET_PARTITION_TABLE).rc:root/init.freescale.sd.rc \

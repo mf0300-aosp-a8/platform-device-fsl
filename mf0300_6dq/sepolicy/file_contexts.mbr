@@ -1,0 +1,33 @@
+#sd boot
+/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/mmcblk2p1           u:object_r:boot_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/mmcblk2p2           u:object_r:recovery_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/mmcblk2p5           u:object_r:system_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/mmcblk2p6           u:object_r:cache_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/mmcblk2p8           u:object_r:misc_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/mmcblk2p10          u:object_r:metadata_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/mmcblk2p11          u:object_r:frp_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/mmcblk2p4           u:object_r:userdata_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/mmcblk2p9           u:object_r:metadata_block_device:s0
+
+#emmc boot
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/mmcblk3p1           u:object_r:boot_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/mmcblk3p2           u:object_r:recovery_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/mmcblk3p5           u:object_r:system_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/mmcblk3p6           u:object_r:cache_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/mmcblk3p8           u:object_r:misc_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/mmcblk3p10          u:object_r:metadata_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/mmcblk3p11          u:object_r:frp_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/mmcblk3p4           u:object_r:userdata_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/mmcblk3p9           u:object_r:metadata_block_device:s0
+
+#peripheral
+/vendor/bin/magd                u:object_r:sensors_exec:s0
+/dev/mma8x5x                    u:object_r:sensors_device:s0
+/dev/ttyGS[0-9]*                u:object_r:tty_device:s0
+/dev/ttymxc[0-9]*               u:object_r:tty_device:s0
+/dev/ttyUSB[0-9]*               u:object_r:tty_device:s0
+/dev/sda[0-8]*                  u:object_r:fuse:s0
+
+#bcm-bt rfkill
+/sys/class/rfkill/rfkill0/state u:object_r:sysfs_bluetooth_writable:s0
+/sys/class/rfkill/rfkill0/type  u:object_r:sysfs_bluetooth_writable:s0

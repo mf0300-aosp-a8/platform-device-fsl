@@ -26,6 +26,8 @@ PRODUCT_COPY_FILES += \
     device/fsl/mf0300_6dq/init.freescale.sd.$(BUILD_TARGET_PARTITION_TABLE).rc:root/init.freescale.sd.rc \
     device/fsl/mf0300_6dq/init.freescale.emmc.$(BUILD_TARGET_PARTITION_TABLE).rc:root/init.freescale.emmc.rc
 
+TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab.freescale.$(BUILD_TARGET_PARTITION_TABLE)
+
 ifeq ($(BUILD_TARGET_PARTITION_TABLE),gpt)
     # Default gpt
     BOARD_BPT_INPUT_FILES = device/fsl/mf0300_6dq/partition/device-partitions-14.6GB.bpt

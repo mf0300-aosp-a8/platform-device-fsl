@@ -12,9 +12,6 @@ endif
 BUILD_TARGET_FS ?= ext4
 include device/fsl/imx6/imx6_target_fs.mk
 
-# build for ext4
-TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab.freescale
-
 # Vendor Interface Manifest
 PRODUCT_COPY_FILES += \
     device/fsl/mf0300_6dq/manifest.xml:vendor/manifest.xml

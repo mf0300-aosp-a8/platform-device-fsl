@@ -29,8 +29,10 @@ PRODUCT_COPY_FILES += \
 ifeq ($(BUILD_TARGET_PARTITION_TABLE),gpt)
     # Default gpt
     BOARD_BPT_INPUT_FILES = device/fsl/mf0300_6dq/partition/device-partitions-14.6GB.bpt
+    PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/by-name/system
 else
     BOARD_BPT_INPUT_FILES =
+    PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/mmcblk3p5
 endif
 # Force no additional partition table strategies
 ADDITION_BPT_PARTITION =
@@ -50,7 +52,6 @@ PRODUCT_COPY_FILES +=	\
 	$(LINUX_FIRMWARE_IMX_PATH)/linux-firmware-imx/firmware/vpu/vpu_fw_imx6d.bin:system/lib/firmware/vpu/vpu_fw_imx6d.bin 	\
 	$(LINUX_FIRMWARE_IMX_PATH)/linux-firmware-imx/firmware/vpu/vpu_fw_imx6q.bin:system/lib/firmware/vpu/vpu_fw_imx6q.bin
 # setup dm-verity configs.
- PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/by-name/system
  $(call inherit-product, build/target/product/verity.mk)
 
 

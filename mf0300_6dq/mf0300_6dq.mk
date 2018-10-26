@@ -30,9 +30,11 @@ ifeq ($(BUILD_TARGET_PARTITION_TABLE),gpt)
     # Default gpt
     BOARD_BPT_INPUT_FILES = device/fsl/mf0300_6dq/partition/device-partitions-14.6GB.bpt
     PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/by-name/system
+    PRODUCT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/presistdata
 else
     BOARD_BPT_INPUT_FILES =
     PRODUCT_SYSTEM_VERITY_PARTITION := /dev/block/mmcblk3p5
+    PRODUCT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/mmcblk3p11
 endif
 # Force no additional partition table strategies
 ADDITION_BPT_PARTITION =
@@ -144,5 +146,3 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.internel.storage_size=/sys/block/bootdev_size
-
-PRODUCT_PROPERTY_OVERRIDES += ro.frp.pst=/dev/block/by-name/presistdata

@@ -1,0 +1,2 @@
+# allow to get access to /proc/bluetooth/sleep/* files
+allow hal_bluetooth_default proc_bluetooth_writable:file rw_file_perms;

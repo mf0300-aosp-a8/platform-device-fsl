@@ -1,2 +1,6 @@
 # allow to get access to /proc/bluetooth/sleep/* files
 allow hal_bluetooth_default proc_bluetooth_writable:file rw_file_perms;
+
+# data file accesses
+allow hal_bluetooth_default bluetooth_data_file:dir search;
+allow hal_bluetooth_default bluetooth_data_file:file { getattr open read };

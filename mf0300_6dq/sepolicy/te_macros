@@ -1,0 +1,10 @@
+# enable for user build
+define(`userdebug_or_eng', ifelse(target_build_variant, `eng', $1, ifelse(target_build_variant, `userdebug', $1, ifelse(target_build_variant, `user', $1))))
+
+# define new macroses for easy use
+###########################################
+# use_bluetooth(domain)
+# Ability to read from bluetooth_device
+define(`use_bluetooth', `
+  allow $1 bluetooth_device:chr_file { open getattr read write ioctl };
+')

@@ -4,3 +4,6 @@ allow hal_bluetooth_default proc_bluetooth_writable:file rw_file_perms;
 # data file accesses
 allow hal_bluetooth_default bluetooth_data_file:dir search;
 allow hal_bluetooth_default bluetooth_data_file:file { getattr open read };
+
+# allow hal_bluetooth_default to get access to bluetooth device
+use_bluetooth(hal_bluetooth_default)

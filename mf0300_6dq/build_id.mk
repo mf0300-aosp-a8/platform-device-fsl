@@ -17,5 +17,3 @@
 # (like "MAIN") or a branch name and a release candidate
 # (like "CRB01").  It must be a single word, and is
 # capitalized by convention.
-
-export BUILD_ID=1.0.0-rfp-rc4

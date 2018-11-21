@@ -1,0 +1,2 @@
+# use hwservice_manager - the binder context manager for HAL services
+allow bootanim hal_configstore_ISurfaceFlingerConfigs:hwservice_manager find;

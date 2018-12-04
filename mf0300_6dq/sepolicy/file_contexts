@@ -1,13 +1,13 @@
-#sd boot
-/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/by-name/boot        u:object_r:boot_block_device:s0
-/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/by-name/recovery    u:object_r:recovery_block_device:s0
-/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/by-name/system      u:object_r:system_block_device:s0
-/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/by-name/cache       u:object_r:cache_block_device:s0
-/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/by-name/misc        u:object_r:misc_block_device:s0
-/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/by-name/metadata    u:object_r:metadata_block_device:s0
-/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/by-name/presistdata u:object_r:frp_block_device:s0
-/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/by-name/userdata    u:object_r:userdata_block_device:s0
-/dev/block/platform/soc0/soc/2100000\.aips-bus/2198000\.usdhc/by-name/datafooter  u:object_r:metadata_block_device:s0
+#emmc boot MBR
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-num/p1           u:object_r:boot_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-num/p2           u:object_r:recovery_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-num/p5           u:object_r:system_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-num/p6           u:object_r:cache_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-num/p8           u:object_r:misc_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-num/p10          u:object_r:metadata_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-num/p11          u:object_r:frp_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-num/p4           u:object_r:userdata_block_device:s0
+/dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-num/p9           u:object_r:metadata_block_device:s0
 
 #emmc boot
 /dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-name/boot        u:object_r:boot_block_device:s0

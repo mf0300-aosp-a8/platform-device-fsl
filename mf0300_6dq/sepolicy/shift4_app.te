@@ -8,3 +8,5 @@ app_domain(shift4_app)
 net_domain(shift4_app)
 
 bluetooth_domain(shift4_app)
+
+use_serialnumberservice(shift4_app)

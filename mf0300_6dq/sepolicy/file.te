@@ -1,0 +1,2 @@
+type sysfs_i2c, fs_type, sysfs_type;
+type serialnumber_socket, file_type;

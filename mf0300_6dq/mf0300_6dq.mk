@@ -145,5 +145,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Launcher3
 
+# Factory serial daemon
+PRODUCT_PACKAGES += \
+	sernd
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.internel.storage_size=/sys/block/bootdev_size

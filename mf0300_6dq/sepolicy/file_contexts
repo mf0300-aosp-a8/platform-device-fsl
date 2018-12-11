@@ -32,3 +32,8 @@
 #bcm-bt rfkill
 /sys/class/rfkill/rfkill0/state u:object_r:sysfs_bluetooth_writable:s0
 /sys/class/rfkill/rfkill0/type  u:object_r:sysfs_bluetooth_writable:s0
+
+#sernd
+/sys/devices/soc0/soc/2100000\.aips-bus/[0-9a-f]+\.i2c(/.*)?                      u:object_r:sysfs_i2c:s0
+/system/bin/sernd               u:object_r:sernd_exec:s0
+/dev/socket/serialnumber        u:object_r:serialnumber_socket:s0

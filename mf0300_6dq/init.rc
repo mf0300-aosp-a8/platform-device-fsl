@@ -271,6 +271,14 @@ service bugreport /system/bin/dumpstate -d -p -B -z \
     oneshot
     keycodes 114 115 116
 
+# Factory serial
+service sernd /system/bin/sernd
+    class main
+    socket serialnumber stream 666
+    user root
+    oneshot
+    seclabel u:r:sernd:s0
+
 on fs
 # mount ext4 partitions
     mount_all /fstab.freescale

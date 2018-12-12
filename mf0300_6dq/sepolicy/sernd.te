@@ -1,0 +1,10 @@
+type sernd, domain;
+type sernd_exec, exec_type, file_type;
+
+init_daemon_domain(sernd)
+
+# read access to sysfs pseudo filesystem
+r_dir_file(sernd, sysfs_i2c)
+
+# write to eeprom file
+allow sernd sysfs_i2c:file w_file_perms;

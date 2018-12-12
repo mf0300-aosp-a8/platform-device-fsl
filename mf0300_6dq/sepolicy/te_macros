@@ -8,3 +8,12 @@ define(`userdebug_or_eng', ifelse(target_build_variant, `eng', $1, ifelse(target
 define(`use_bluetooth', `
   allow $1 bluetooth_device:chr_file { open getattr read write ioctl };
 ')
+
+###########################################
+# use_serialnumberservice(domain)
+# Ability to use operations with serial number socket
+# that use sernd chinese service
+define(`use_serialnumberservice', `
+  allow $1 serialnumber_socket:sock_file { getattr read write };
+  allow $1 sernd:unix_stream_socket { getattr getopt read write connectto };
+')

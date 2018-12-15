@@ -354,7 +354,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.FSL_MPG2_PARSER=1 \
 
 PRODUCT_DEFAULT_DEV_CERTIFICATE := \
-        device/fsl/common/security/testkey
+        device/fsl/mf0300_6dq/security/testkey
 
 # In userdebug, add minidebug info the the boot image and the system server to support
 # diagnosing native crashes.

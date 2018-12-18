@@ -1,0 +1,6 @@
+###
+### Apps signed with the Shift4 Corporation certificate
+###
+
+type shift4_app, domain;
+app_domain(shift4_app)

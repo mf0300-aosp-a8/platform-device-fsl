@@ -62,6 +62,7 @@ PHONE_MODULE_INCLUDE := true
 # camera hal v3
 IMX_CAMERA_HAL_V3 := true
 
+BOARD_USES_ALSA_AUDIO := false
 
 #define consumer IR HAL support
 IMX6_CONSUMER_IR_HAL := false

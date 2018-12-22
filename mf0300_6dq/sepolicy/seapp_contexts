@@ -1,0 +1,2 @@
+# shift4 selinux app domain context file type
+user=_app seinfo=shift4 domain=shift4_app type=shift4_app_data_file

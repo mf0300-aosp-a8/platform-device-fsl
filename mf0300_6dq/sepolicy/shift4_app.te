@@ -14,3 +14,24 @@ use_cardreader(shift4_app)
 
 allow shift4_app shift4_app_data_file:dir create_dir_perms;
 allow shift4_app shift4_app_data_file: { file lnk_file } create_file_perms;
+
+allow shift4_app { activity_service
+                   accessibility_service
+                   activity_service
+                   appops_service
+                   autofill_service
+                   connectivity_service
+                   content_service
+                   display_service
+                   graphicsstats_service
+                   input_method_service
+                   input_service
+                   jobscheduler_service
+                   mount_service
+                   power_service
+                   surfaceflinger_service
+                   uimode_service
+                   wifi_service
+                   audio_service
+                   notification_service
+                   usb_service }:service_manager find;

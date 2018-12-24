@@ -289,6 +289,7 @@ PRODUCT_PACKAGES += \
     libfsldisplay
 
 PRODUCT_COPY_FILES +=	\
+	device/fsl/mf0300_6dq/security/lighthousenetwork.x509.pem:system/etc/security/shift4.x509.pem \
 	device/fsl/common/input/Dell_Dell_USB_Keyboard.kl:system/usr/keylayout/Dell_Dell_USB_Keyboard.kl \
 	device/fsl/common/input/Dell_Dell_USB_Keyboard.idc:system/usr/idc/Dell_Dell_USB_Keyboard.idc \
 	device/fsl/common/input/Dell_Dell_USB_Entry_Keyboard.idc:system/usr/idc/Dell_Dell_USB_Entry_Keyboard.idc \

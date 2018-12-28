@@ -1,0 +1,1 @@
+allow system_server shift4_app:file w_file_perms;

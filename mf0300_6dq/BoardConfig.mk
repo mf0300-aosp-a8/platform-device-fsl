@@ -38,10 +38,6 @@ WIFI_DRIVER_FW_PATH_P2P        := "/vendor/firmware/bcm/GB86302I_BCM4330/fw_bcm4
 WIFI_DRIVER_FW_PATH_AP         := "/vendor/firmware/bcm/GB86302I_BCM4330/fw_bcm4330b2_ag_apsta.bin"
 WIFI_DRIVER_FW_PATH_PARAM      := "/sys/module/bcmdhd/parameters/firmware_path"
 
-#for accelerator sensor, need to define sensor type here
-BOARD_HAS_SENSOR := true
-SENSOR_MMA8451 := true
-
 # for recovery service
 TARGET_SELECT_KEY := 28
 

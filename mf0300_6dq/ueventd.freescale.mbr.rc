@@ -20,7 +20,6 @@
 /dev/graphics/fb0         0660   system     graphics
 /dev/watchdog             0660   system     root
 /dev/ir                   0660   system     system
-/dev/mma8x5x              0640   compass     system
 /dev/caam_kb              0660   system     system
 /dev/input/event*         0660   system     system
 
@@ -39,16 +38,6 @@
 
 /sys/devices/soc0/soc/2100000\.aips-bus/219c000.usdhc/mmc_host/mmc3/mmc3\:000* boot_bus_config 0660 root root
 /sys/devices/soc0/soc/2100000\.aips-bus/219c000.usdhc/mmc_host/mmc3/mmc3\:000* boot_config 0660 root root
-# for sabresd
-/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 mode 0660 system system
-/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 lux 0660 system system
-/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 int_lt_lux 0660 system system
-/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-2/2-0044 int_ht_lux 0660 system system
-# for sabreauto
-/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 mode 0660 system system
-/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 lux 0660 system system
-/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 int_lt_lux 0660 system system
-/sys/devices/soc0/soc/2100000.aips-bus/21a8000.i2c/i2c-1/1-0044 int_ht_lux 0660 system system
 /sys/devices/platform/mxc_dvfs_core.0 enable 0660 system system
 /sys/devices/soc0/soc/soc\:busfreq enable 0660 system system
 

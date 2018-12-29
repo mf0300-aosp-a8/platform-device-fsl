@@ -142,10 +142,6 @@ on boot
     chown system system /sys/class/backlight/backlight/brightness
     chmod 0660 /sys/class/backlight/backlight/brightness
 
-    # Set light sensor sysfs path and light sensor threshold lux value
-    setprop ro.hardware.lightsensor "/sys/class/i2c-dev/i2c-2/device/2-0044/"
-    setprop ro.lightsensor.threshold  20
-
     # Wifi firmware reload path
     chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
     chown wifi wifi /sys/module/bcmdhd/parameters/nvram_path

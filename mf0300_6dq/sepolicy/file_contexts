@@ -21,7 +21,6 @@
 /dev/block/platform/soc0/soc/2100000\.aips-bus/219c000\.usdhc/by-name/datafooter  u:object_r:metadata_block_device:s0
 
 #peripheral
-/dev/mma8x5x                    u:object_r:sensors_device:s0
 /dev/ttyGS[0-9]*                u:object_r:tty_device:s0
 /dev/ttymxc[0-9]*               u:object_r:tty_device:s0
 /dev/ttyUSB[0-9]*               u:object_r:tty_device:s0

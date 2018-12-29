@@ -55,9 +55,6 @@ USE_GPU_ALLOCATOR := false
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 PHONE_MODULE_INCLUDE := true
-# camera hal v3
-IMX_CAMERA_HAL_V3 := true
-
 BOARD_USES_ALSA_AUDIO := false
 
 #define consumer IR HAL support

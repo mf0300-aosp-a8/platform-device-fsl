@@ -10,11 +10,7 @@ PRODUCT_PACKAGES += \
 	LiveWallpapers				\
 	LiveWallpapersPicker			\
 	MagicSmokeWallpapers			\
-	Gallery2				\
-	Gallery		    			\
 	SoundRecorder				\
-	Camera					\
-        LegacyCamera                            \
 	Email					\
 	FSLOta					\
 	CactusPlayer                            \
@@ -25,7 +21,6 @@ PRODUCT_PACKAGES += \
 	libfsl_hdcp_blob                     \
 	libstagefright_hdcp.so                  \
 	libstagefright_hdcp                  \
-	VideoEditor				\
 	FSLProfileApp				\
 	FSLProfileService			\
 	VisualizationWallpapers			\
@@ -84,7 +79,6 @@ PRODUCT_PACKAGES += \
 	gralloc.imx6				\
 	copybit.imx6				\
 	hwcomposer.imx6				\
-	camera.imx6				\
 	power.imx6				\
 	audio.r_submix.default			\
 	libbt-vendor				\
@@ -95,13 +89,6 @@ PRODUCT_PACKAGES += \
 	memtrack.imx6 \
 	android.hardware.memtrack@1.0-impl \
 	android.hardware.memtrack@1.0-service
-
-# camera related libs
-PRODUCT_PACKAGES += \
-	camera.device@1.0-impl          \
-	camera.device@3.2-impl          \
-	android.hardware.camera.provider@2.4-impl \
-        android.hardware.camera.provider@2.4-service
 
 # Freescale VPU firmware files.
 PRODUCT_PACKAGES += \

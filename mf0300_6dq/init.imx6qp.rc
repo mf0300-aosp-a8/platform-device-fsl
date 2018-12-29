@@ -8,9 +8,3 @@ on boot
 
     # set media_profile.xml
     setprop media.settings.xml /etc/media_profiles_720p.xml
-
-    # set back camera.
-    setprop back_camera_name ov5640_camera
-
-    # set front camera.
-    setprop front_camera_name uvc

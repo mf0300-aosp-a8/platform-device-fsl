@@ -54,7 +54,6 @@ USE_GPU_ALLOCATOR := false
 # define frame buffer count
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
-PHONE_MODULE_INCLUDE := true
 BOARD_USES_ALSA_AUDIO := false
 
 #define consumer IR HAL support

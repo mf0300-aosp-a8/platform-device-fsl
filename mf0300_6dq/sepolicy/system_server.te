@@ -1,1 +1,4 @@
 allow system_server shift4_app:file w_file_perms;
+
+# Allow system_server to write to /proc/<pid>/timerslack_ns
+allow system_server appdomain:file w_file_perms;

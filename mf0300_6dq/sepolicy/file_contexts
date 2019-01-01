@@ -26,6 +26,7 @@
 /dev/ttyUSB[0-9]*               u:object_r:tty_device:s0
 /dev/sda[0-8]*                  u:object_r:fuse:s0
 /dev/ttymxc1                    u:object_r:bluetooth_device:s0
+/dev/ttymxc3                    u:object_r:console_device:s0
 /dev/ttymxc4                    u:object_r:cardreader_device:s0
 
 #bcm-bt rfkill

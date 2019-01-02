@@ -139,5 +139,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	sernd
 
+# TeamViewer
+PRODUCT_PACKAGES += \
+	TeamViewerQS
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.internel.storage_size=/sys/block/bootdev_size

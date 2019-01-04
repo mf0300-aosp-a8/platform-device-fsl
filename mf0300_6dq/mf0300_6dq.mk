@@ -144,4 +144,5 @@ PRODUCT_PACKAGES += \
 	TeamViewerQS
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.tether.denied=true \
     ro.internel.storage_size=/sys/block/bootdev_size

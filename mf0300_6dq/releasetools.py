@@ -43,7 +43,9 @@ def IncrementalOTA_InstallEnd_Ext4(info):
 def WriteExt4Bootloader(info, bootloader_bin):
   common.ZipWriteStr(info.output_zip, "bootloader.img", bootloader_bin)
   fstab = info.info_dict["fstab"]
-
   info.script.Print("Writing bootloader...")
+  info.script.ShowProgress(0.05, 3)
   info.script.AppendExtra('''package_extract_bootloader("bootloader.img", "%s");''' %
                           (fstab["/bootloader"].device,))
+  info.script.Print("DONE")
+  info.script.ShowProgress(0.05, 3)

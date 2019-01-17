@@ -25,15 +25,6 @@ def FullOTA_InstallEnd_Ext4(info):
   else:
     WriteExt4Bootloader(info, bootloader_bin)
 
-def FullOTA_InstallEnd_Ubifs(info):
-  try:
-    bootloader_bin = info.input_zip.read("RADIO/bootloader.img")
-  except KeyError:
-    print "no bootloader.raw in target_files; skipping install"
-  else:
-    WriteUbifsBootloader(info, bootloader_bin)
-
-
 def IncrementalOTA_InstallEnd_Ext4(info):
   try:
     target_bootloader_bin = info.target_zip.read("RADIO/bootloader.img")
@@ -49,22 +40,6 @@ def IncrementalOTA_InstallEnd_Ext4(info):
   except KeyError:
     print "no bootloader.img in target target_files; skipping install"
 
-
-def IncrementalOTA_InstallEnd_Ubifs(info):
-  try:
-    target_bootloader_bin = info.target_zip.read("RADIO/bootloader.img")
-    try:
-      source_bootloader_bin = info.source_zip.read("RADIO/bootloader.img")
-    except KeyError:
-      source_bootloader_bin = None
-
-    if source_bootloader_bin == target_bootloader_bin:
-      print "bootloader unchanged; skipping"
-    else:
-      WriteUbifsBootloader(info, target_bootloader_bin)
-  except KeyError:
-    print "no bootloader.img in target target_files; skipping install"
-
 def WriteExt4Bootloader(info, bootloader_bin):
   common.ZipWriteStr(info.output_zip, "bootloader.img", bootloader_bin)
   fstab = info.info_dict["fstab"]
@@ -72,14 +47,3 @@ def WriteExt4Bootloader(info, bootloader_bin):
   info.script.Print("Writing bootloader...")
   info.script.AppendExtra('''package_extract_bootloader("bootloader.img", "%s");''' %
                           (fstab["/bootloader"].device,))
-
-def WriteUbifsBootloader(info, bootloader_bin):
-  common.ZipWriteStr(info.output_zip, "bootloader.img", bootloader_bin)
-  fstab = info.info_dict["fstab"]
-
-  info.script.Print("Writing bootloader...")
-  info.script.AppendExtra('''package_extract_file("bootloader.img", "%s");''' %
-                          "/tmp/bootloader.imx")
-  info.script.AppendExtra('''write_raw_bootloader_image("/tmp/bootloader.imx", "bootloader");''' )
-  info.script.AppendExtra('''delete("/tmp/bootloader.imx");''' )
- 

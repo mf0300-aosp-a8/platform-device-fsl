@@ -17,7 +17,7 @@
 
 import common
 
-def FullOTA_InstallEnd_Ext4(info):
+def FullOTA_InstallEnd(info):
   try:
     bootloader_bin = info.input_zip.read("RADIO/bootloader.img")
   except KeyError:
@@ -25,7 +25,7 @@ def FullOTA_InstallEnd_Ext4(info):
   else:
     WriteExt4Bootloader(info, bootloader_bin)
 
-def IncrementalOTA_InstallEnd_Ext4(info):
+def IncrementalOTA_InstallEnd(info):
   try:
     target_bootloader_bin = info.target_zip.read("RADIO/bootloader.img")
     try:

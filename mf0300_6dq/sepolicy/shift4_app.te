@@ -11,3 +11,6 @@ bluetooth_domain(shift4_app)
 
 use_serialnumberservice(shift4_app)
 use_cardreader(shift4_app)
+
+allow shift4_app shift4_app_data_file:dir create_dir_perms;
+allow shift4_app shift4_app_data_file: { file lnk_file } create_file_perms;

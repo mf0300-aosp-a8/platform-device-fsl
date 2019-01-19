@@ -10,3 +10,4 @@ net_domain(shift4_app)
 bluetooth_domain(shift4_app)
 
 use_serialnumberservice(shift4_app)
+use_cardreader(shift4_app)

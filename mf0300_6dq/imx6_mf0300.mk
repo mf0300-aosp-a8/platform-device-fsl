@@ -7,9 +7,6 @@ PRODUCT_MANUFACTURER := freescale
 
 # Android infrastructures
 PRODUCT_PACKAGES += \
-	LiveWallpapers				\
-	LiveWallpapersPicker			\
-	MagicSmokeWallpapers			\
 	SoundRecorder				\
 	Email					\
 	FSLOta					\
@@ -23,8 +20,6 @@ PRODUCT_PACKAGES += \
 	libstagefright_hdcp                  \
 	FSLProfileApp				\
 	FSLProfileService			\
-	VisualizationWallpapers			\
-	CubeLiveWallpapers			\
 	PinyinIME				\
 	libjni_pinyinime        		\
 	libRS					\

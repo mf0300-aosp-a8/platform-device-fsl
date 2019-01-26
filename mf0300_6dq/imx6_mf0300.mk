@@ -7,7 +7,6 @@ PRODUCT_MANUFACTURER := freescale
 
 # Android infrastructures
 PRODUCT_PACKAGES += \
-	SoundRecorder				\
 	Email					\
 	FSLOta					\
 	CactusPlayer                            \

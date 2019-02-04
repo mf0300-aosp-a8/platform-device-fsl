@@ -41,6 +41,9 @@ WIFI_DRIVER_FW_PATH_PARAM      := "/sys/module/bcmdhd/parameters/firmware_path"
 # for recovery service
 TARGET_SELECT_KEY := 28
 
+# add device-specific extensions to the updater binary
+TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_mf0300_6dq
+
 # we don't support sparse image.
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 

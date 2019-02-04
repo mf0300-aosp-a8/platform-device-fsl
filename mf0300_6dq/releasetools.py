@@ -17,6 +17,37 @@
 
 import common
 
+def FullOTA_InstallBegin(info):
+  part_table_bin = info.input_zip.read("IMAGES/partition-table.img")
+  common.ZipWriteStr(info.output_zip, "partition-table.img", part_table_bin)
+  recovery_bin = info.input_zip.read("IMAGES/recovery.img")
+  common.ZipWriteStr(info.output_zip, "recovery.img", recovery_bin)
+  info.script.AppendExtra('''
+if !is_partition_table_same("/dev/block/mmcblk3", "partition-table.img") then
+  remountro("/dev/block/mmcblk3p6", "/cache");
+  if is_mounted("/cache") then unmount_l("/cache") endif;
+  ui_print("Writing bootloader...");
+  package_extract_bootloader("bootloader.img", "/dev/block/mmcblk3boot0") || abort("Failed to update bootloader.");
+  ui_print("Backuping update package...");
+  backup_update_package();
+  package_extract_file("recovery.img", "/tmp/recovery.img") || abort("Unable to extract recovery image.");
+  ui_print("Updating partition table...");
+  write_partition_table("partition-table.img", "/dev/block/mmcblk3");
+  ui_print("Writing recovery...");
+  part2loop("/dev/block/mmcblk3", "recovery", "/dev/block/loop0");
+  write_image_raw("/tmp/recovery.img", "/dev/block/loop0");
+  ui_print("Formatting /cache...");
+  part2loop("/dev/block/mmcblk3", "cache", "/dev/block/loop1");
+  format("ext4", "EMMC", "/dev/block/loop1", 0, "/cache");
+  mount_device("/dev/block/loop1", "ext4", "/cache");
+  ui_print("Restoring update package...");
+  restore_update_package();
+  ui_print("Rebooting into new recovery...");
+  part2loop("/dev/block/mmcblk3", "misc", "/dev/block/loop2");
+  reboot_recovery("/dev/block/loop2");
+endif;''')
+
+
 def FullOTA_InstallEnd(info):
   try:
     bootloader_bin = info.input_zip.read("RADIO/bootloader.img")

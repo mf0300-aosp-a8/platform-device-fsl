@@ -146,4 +146,5 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.tether.denied=true \
+    ro.control_privapp_permissions=enforce \
     ro.internel.storage_size=/sys/block/bootdev_size

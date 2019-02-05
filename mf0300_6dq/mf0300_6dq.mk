@@ -68,6 +68,7 @@ PRODUCT_AAPT_CONFIG += xlarge large tvdpi hdpi xhdpi
 
 PRODUCT_COPY_FILES += \
 	device/fsl/mf0300_6dq/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml \
+	device/fsl/mf0300_6dq/privapp-permissions.xml:system/etc/permissions/privapp-permissions-mf0300_6dq.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
 	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
 	frameworks/native/data/etc/android.hardware.faketouch.xml:system/etc/permissions/android.hardware.faketouch.xml \

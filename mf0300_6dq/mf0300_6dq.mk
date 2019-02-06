@@ -133,9 +133,6 @@ PRODUCT_PACKAGES += \
     libg2d \
     libgpuhelper
 
-PRODUCT_PACKAGES += \
-    Launcher3
-
 # Factory serial daemon
 PRODUCT_PACKAGES += \
 	sernd

@@ -32,6 +32,12 @@ def FullOTA_InstallBegin(info):
 if !is_partition_table_same("/dev/block/mmcblk3", "partition-table.img") then
   remountro("/dev/block/mmcblk3p6", "/cache");
   if is_mounted("/cache") then unmount_l("/cache") endif;
+  ui_print("Moving /data partition...");
+  package_extract_file("partition-table.img", "/tmp/partition-table.img") || abort("Unable to extract GPT table image.");
+  package_extract_file("tools/e2fsck", "/tmp/e2fsck") || abort("Unable to extract e2fsck.");
+  package_extract_file("tools/e2image", "/tmp/e2image") || abort("Unable to extract e2image.");
+  package_extract_file("tools/resize2fs", "/tmp/resize2fs") || abort("Unable to extract resize2fs.");
+  move_ext4_partition("/dev/block/mmcblk3p4", "/tmp/partition-table.img", "userdata");
   ui_print("Writing bootloader...");
   package_extract_bootloader("bootloader.img", "/dev/block/mmcblk3boot0") || abort("Failed to update bootloader.");
   ui_print("Backuping update package...");

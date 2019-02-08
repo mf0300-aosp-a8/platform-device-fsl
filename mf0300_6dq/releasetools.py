@@ -22,6 +22,12 @@ def FullOTA_InstallBegin(info):
   common.ZipWriteStr(info.output_zip, "partition-table.img", part_table_bin)
   recovery_bin = info.input_zip.read("IMAGES/recovery.img")
   common.ZipWriteStr(info.output_zip, "recovery.img", recovery_bin)
+  e2fsck_bin = info.input_zip.read("RADIO/e2fsck")
+  common.ZipWriteStr(info.output_zip, "tools/e2fsck", e2fsck_bin)
+  e2image_bin = info.input_zip.read("RADIO/e2image")
+  common.ZipWriteStr(info.output_zip, "tools/e2image", e2image_bin)
+  resize2fs_bin = info.input_zip.read("RADIO/resize2fs")
+  common.ZipWriteStr(info.output_zip, "tools/resize2fs", resize2fs_bin)
   info.script.AppendExtra('''
 if !is_partition_table_same("/dev/block/mmcblk3", "partition-table.img") then
   remountro("/dev/block/mmcblk3p6", "/cache");

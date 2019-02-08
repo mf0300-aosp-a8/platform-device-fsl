@@ -11,7 +11,8 @@ LOCAL_C_INCLUDES += \
 LOCAL_SRC_FILES := recovery_updater.cpp \
     utils/exec_utils.cpp \
     utils/gpt_utils.c \
-    utils/loop_utils.c
+    utils/loop_utils.c \
+    utils/sysfs_utils.c
 
 LOCAL_MODULE := librecovery_updater_mf0300_6dq
 

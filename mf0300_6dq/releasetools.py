@@ -29,7 +29,7 @@ def FullOTA_InstallBegin(info):
   resize2fs_bin = info.input_zip.read("RADIO/resize2fs")
   common.ZipWriteStr(info.output_zip, "tools/resize2fs", resize2fs_bin)
   info.script.AppendExtra('''
-if !is_partition_table_same("/dev/block/mmcblk3", "partition-table.img") then
+if !is_partition_table_gpt("/dev/block/mmcblk3") then
   remountro("/dev/block/mmcblk3p6", "/cache");
   if is_mounted("/cache") then unmount_l("/cache") endif;
   ui_print("Moving /data partition...");

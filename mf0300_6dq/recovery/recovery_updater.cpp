@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <sys/mount.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 #include <android-base/file.h>
 #include <android-base/logging.h>
@@ -136,11 +137,11 @@ Value* MountOnLoopDeviceFn(const char* name, State* state, const std::vector<std
   return StringValue(loop_path);
 }
 
-// Compares partition table on given block device and in image from OTA package
-// if is_partition_table_same("/dev/block/mmcblk3", "partition-table.img") then ... enfif;
-Value* ComparePartitionTableFn(const char* name, State* state, const std::vector<std::unique_ptr<Expr>>& argv) {
-  if (argv.size() != 2) {
-    return ErrorAbort(state, kArgsParsingFailure, "%s() expects 2 args, got %zu", name, argv.size());
+// Checks partition table on given block device is GPT, just verifies signature
+// if is_partition_table_gpt("/dev/block/mmcblk3") then ... enfif;
+Value* IsPartitionTableGptFn(const char* name, State* state, const std::vector<std::unique_ptr<Expr>>& argv) {
+  if (argv.size() != 1) {
+    return ErrorAbort(state, kArgsParsingFailure, "%s() expects 1 args, got %zu", name, argv.size());
   }
 
   std::vector<std::string> args;
@@ -149,33 +150,6 @@ Value* ComparePartitionTableFn(const char* name, State* state, const std::vector
   }
 
   const std::string& dev_path = args[0];
-  const std::string& zip_path = args[1];
-
-  UpdaterInfo* ui = static_cast<UpdaterInfo*>(state->cookie);
-  ZipArchiveHandle za = ui->package_zip;
-  ZipString zip_string_path(zip_path.c_str());
-  ZipEntry entry;
-
-  if (FindEntry(za, zip_string_path, &entry) != 0) {
-    return ErrorAbort(state, kPackageExtractFileFailure, "%s(): no %s in package", name, zip_path.c_str());
-  }
-
-  const size_t kMbrSize = 512;       // just one sector
-  const size_t kGptSize = 33*512;    // 1 sector for header + 32 sectors for partition table
-  const size_t kPartTableSize = kMbrSize + 2*kGptSize;   // protective MBR and 2 GPT structures
-
-  if (entry.uncompressed_length != kPartTableSize) {
-    return ErrorAbort(state, kPackageExtractFileFailure, "%s(): invalid partition table size", name);
-  }
-
-  std::unique_ptr<uint8_t[]> table_buf(new uint8_t[kPartTableSize]());
-
-  int32_t ret = ExtractToMemory(za, &entry, table_buf.get(), kPartTableSize);
-  if (ret != 0) {
-    return ErrorAbort(state, kPackageExtractFileFailure,
-                      "%s(): Failed to extract entry \"%s\" (%zu bytes) to memory: %s", name,
-                      zip_path.c_str(), kPartTableSize, ErrorCodeString(ret));
-  }
 
   unique_fd dev_fd(ota_open(dev_path.c_str(), O_RDONLY));
   if (dev_fd.get() < 0) {
@@ -183,17 +157,16 @@ Value* ComparePartitionTableFn(const char* name, State* state, const std::vector
     return ErrorAbort(state, kFileOpenFailure, "%s(): Failed to open device %s for reading", name, dev_path.c_str());
   }
 
-  std::unique_ptr<uint8_t[]> device_table(new uint8_t[kMbrSize + kGptSize]());
-
   // device may have MBR partition table which we will try interpret as GPT.
   // in this case we will get wittingly wrong backup LBA offset, so compare only
-  // first 34 sectors (protective MBR + primary GPT)
-  if (!android::base::ReadFully(dev_fd, device_table.get(), kMbrSize + kGptSize)) {
-    PLOG(ERROR) << name << "(): Failed to read primary GPT";
-    return ErrorAbort(state, kFreadFailure, "%s(): Failed to read primary GPT", name);
+  // signature ("EFI PART", 0x5452415020494645ULL) from primary GPT header at LBA 1
+  uint64_t disk_signature = 0;
+  if (pread(dev_fd, &disk_signature, sizeof(disk_signature), 512) != sizeof(disk_signature)) {
+    PLOG(ERROR) << name << "(): Failed to read GPT signature";
+    return ErrorAbort(state, kFreadFailure, "%s(): Failed to read GPT signature", name);
   }
 
-  return StringValue(memcmp(table_buf.get(), device_table.get(), kMbrSize + kGptSize) == 0 ? "t" : "");
+  return StringValue(disk_signature == 0x5452415020494645ULL ? "t" : "");
 }
 
 // Simple convenient helper function to create (if required) file and write given data to it
@@ -476,7 +449,7 @@ Value* MoveExt4PartitionFn(const char* name, State* state, const std::vector<std
 void Register_librecovery_updater_mf0300_6dq() {
   RegisterFunction("write_partition_table", WritePartitionTableFn);
   RegisterFunction("part2loop", MountOnLoopDeviceFn);
-  RegisterFunction("is_partition_table_same", ComparePartitionTableFn);
+  RegisterFunction("is_partition_table_gpt", IsPartitionTableGptFn);
   RegisterFunction("backup_update_package", BackupUpdatePackageFn);
   RegisterFunction("restore_update_package", RestoreUpdatePackageFn);
   RegisterFunction("reboot_recovery", RebootRecoveryFn);

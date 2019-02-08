@@ -19,8 +19,10 @@
 #include "otautil/SysUtil.h"
 #include "updater/updater.h"
 
+#include "utils/exec_utils.h"
 #include "utils/gpt_utils.h"
 #include "utils/loop_utils.h"
+#include "utils/sysfs_utils.h"
 
 // Writes GPT partition table data from image inside OTA package to specified block device
 // write_partition_table("partition-table.img", "/dev/block/mmcblk3");
@@ -411,6 +413,65 @@ Value* RemountReadOnlyFn(const char* name, State* state, const std::vector<std::
   return StringValue("t");
 }
 
+// Moves given ext2/3/4 partition to new offset according to GPT table
+// move_ext4_partition("/dev/block/mmcblk3p4", "/tmp/part-table.img", "userdata");
+// requires e2fsck, e2image, resize2fs utilities in /tmp
+Value* MoveExt4PartitionFn(const char* name, State* state, const std::vector<std::unique_ptr<Expr>>& argv) {
+  if (argv.size() != 3) {
+    return ErrorAbort(state, kArgsParsingFailure, "%s() expects 3 args, got %zu", name, argv.size());
+  }
+
+  std::vector<std::string> args;
+  if (!ReadArgs(state, argv, &args)) {
+    return ErrorAbort(state, kArgsParsingFailure, "%s() Failed to parse %zu args", name, argv.size());
+  }
+
+  const std::string& part_dev = args[0];
+  const std::string& gpt_image = args[1];
+  const std::string& part_name = args[2];
+
+  uint64_t mbr_offset, mbr_size;
+  if (sysfs_get_partition_offset_and_size(part_dev.c_str(), &mbr_offset, &mbr_size) != 0) {
+    PLOG(ERROR) << name << "(): unable to get partition offset and size from sysfs";
+    return nullptr;
+  }
+
+  uint64_t gpt_offset, gpt_size;
+  if (get_partition_offset_and_size(gpt_image.c_str(), part_name.c_str(), &gpt_offset, &gpt_size) != 0) {
+    PLOG(ERROR) << name << "(): unable to get partition offset and size from GPT image";
+    return nullptr;
+  }
+
+  // check filesystem before resize
+  if (!run_program({"/tmp/e2fsck", "-fy", part_dev})) {
+    LOG(ERROR) << name << "(): e2fsck failed";
+    return nullptr;
+  }
+
+  // resize filesystem to size according to GPT partition table
+  // resize2fs doesn't accept size in bytes, but in 512 sectors does, so convert it
+  if (!run_program({"/tmp/resize2fs", part_dev, std::to_string(gpt_size / 512) + "s"})) {
+    LOG(ERROR) << name << "(): resize2fs failed";
+    return nullptr;
+  }
+
+  // move partition to new offset (MBR -> GPT)
+  std::string old_offset = std::to_string(mbr_offset);
+  std::string new_offset = std::to_string(gpt_offset);
+  int block_dev_path_length = device_from_partition(part_dev.c_str(), nullptr, 0);
+  if (block_dev_path_length == -1) {
+    LOG(ERROR) << name << "(): unable to parse block device path";
+    return nullptr;
+  }
+  std::string block_dev = part_dev.substr(0, block_dev_path_length);
+  if (!run_program({"/tmp/e2image", "-ra", "-o", old_offset, "-O", new_offset, block_dev})) {
+    LOG(ERROR) << name << "(): e2image failed";
+    return nullptr;
+  }
+
+  return StringValue("t");
+}
+
 
 void Register_librecovery_updater_mf0300_6dq() {
   RegisterFunction("write_partition_table", WritePartitionTableFn);
@@ -423,4 +484,5 @@ void Register_librecovery_updater_mf0300_6dq() {
   RegisterFunction("mount_device", MountDeviceFn);
   RegisterFunction("unmount_l", UnmountlFn);
   RegisterFunction("remountro", RemountReadOnlyFn);
+  RegisterFunction("move_ext4_partition", MoveExt4PartitionFn);
 }

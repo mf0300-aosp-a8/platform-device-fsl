@@ -9,6 +9,7 @@ LOCAL_C_INCLUDES += \
     system/core/base/include
 
 LOCAL_SRC_FILES := recovery_updater.cpp \
+    utils/exec_utils.cpp \
     utils/gpt_utils.c \
     utils/loop_utils.c
 

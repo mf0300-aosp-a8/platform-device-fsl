@@ -17,7 +17,7 @@
 
 import common
 
-def FullOTA_InstallBegin(info):
+def ChangePartitionTableToGPT(info):
   part_table_bin = info.input_zip.read("IMAGES/partition-table.img")
   common.ZipWriteStr(info.output_zip, "partition-table.img", part_table_bin)
   recovery_bin = info.input_zip.read("IMAGES/recovery.img")

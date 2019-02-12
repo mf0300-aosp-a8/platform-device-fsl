@@ -68,6 +68,14 @@ def FullOTA_InstallEnd(info):
   else:
     WriteExt4Bootloader(info, bootloader_bin)
 
+  try:
+    recovery_bin = info.input_zip.read("IMAGES/recovery.img")
+  except KeyError:
+    print "no recovery image in target_files; skipping install"
+  else:
+    WriteRecovery(info, recovery_bin)
+
+
 def IncrementalOTA_InstallEnd(info):
   try:
     target_bootloader_bin = info.target_zip.read("RADIO/bootloader.img")
@@ -83,6 +91,21 @@ def IncrementalOTA_InstallEnd(info):
   except KeyError:
     print "no bootloader.img in target target_files; skipping install"
 
+  try:
+    target_recovery_bin = info.target_zip.read("IMAGES/recovery.img")
+    try:
+      source_recovery_bin = info.source_zip.read("IMAGES/recovery.img")
+    except KeyError:
+      source_recovery_bin = None
+
+    if source_recovery_bin == target_recovery_bin:
+      print "recovery unchanged; skipping"
+    else:
+      WriteRecovery(info, target_recovery_bin)
+  except KeyError:
+    print "no recovery image in target_files; skipping install"
+
+
 def WriteExt4Bootloader(info, bootloader_bin):
   common.ZipWriteStr(info.output_zip, "bootloader.img", bootloader_bin)
   fstab = info.info_dict["fstab"]
@@ -92,3 +115,10 @@ def WriteExt4Bootloader(info, bootloader_bin):
                           (fstab["/bootloader"].device,))
   info.script.Print("DONE")
   info.script.ShowProgress(0.05, 3)
+
+
+def WriteRecovery(info, recovery_bin):
+  common.ZipWriteStr(info.output_zip, "recovery.img", recovery_bin)
+  fstab = info.info_dict["fstab"]
+  info.script.Print("Writing recovery...")
+  info.script.AppendExtra('''write_image_raw("recovery.img", "%s");''' % (fstab["/recovery"].device,))

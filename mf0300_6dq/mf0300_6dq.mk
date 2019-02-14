@@ -145,6 +145,7 @@ PRODUCT_PACKAGES += \
 	TeamViewerQS
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    config.disable_cameraservice=true \
     ro.tether.denied=true \
     ro.control_privapp_permissions=enforce \
     ro.internel.storage_size=/sys/block/bootdev_size

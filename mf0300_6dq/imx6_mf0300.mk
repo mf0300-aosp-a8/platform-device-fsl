@@ -48,11 +48,6 @@ PRODUCT_PACKAGES += \
 	taskset					\
 	sqlite3
 
-# Wifi AP mode
-PRODUCT_PACKAGES += \
-	hostapd					\
-	hostapd_cli
-
 #audio related lib
 PRODUCT_PACKAGES += \
 	audio.primary.imx6			\
@@ -299,7 +294,6 @@ PRODUCT_COPY_FILES +=	\
 PRODUCT_COPY_FILES += \
 	$(IMX_FIRMWARE_PATH)/imx-firmware/brcm/GB86302I_BCM4330/bcm4330b2.hcd:vendor/firmware/bcm/GB86302I_BCM4330/bcm4330b2.hcd \
 	$(IMX_FIRMWARE_PATH)/imx-firmware/brcm/GB86302I_BCM4330/fw_bcm4330b2_ag.bin:vendor/firmware/bcm/GB86302I_BCM4330/fw_bcm4330b2_ag.bin \
-	$(IMX_FIRMWARE_PATH)/imx-firmware/brcm/GB86302I_BCM4330/fw_bcm4330b2_ag_apsta.bin:vendor/firmware/bcm/GB86302I_BCM4330/fw_bcm4330b2_ag_apsta.bin \
 	$(IMX_FIRMWARE_PATH)/imx-firmware/brcm/GB86302I_BCM4330/bcmdhd.GB86302I.BCM4330.cal:vendor/firmware/bcm/GB86302I_BCM4330/bcmdhd.GB86302I.BCM4330.cal \
 
 # we have enough storage space to hold precise GC data

@@ -172,7 +172,6 @@ omx_libs := \
 	lib_omx_mp3_enc_v2_arm11_elinux \
 	lib_omx_amr_enc_v2_arm11_elinux \
 	lib_omx_android_audio_source_arm11_elinux \
-	lib_omx_camera_source_arm11_elinux \
 	lib_mp4_muxer_arm11_elinux \
 	lib_mp3_enc_v2_arm12_elinux \
 	lib_nb_amr_enc_v2_arm11_elinux \

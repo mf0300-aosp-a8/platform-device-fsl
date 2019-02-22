@@ -48,6 +48,8 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/fsl/mf0300_6dq/bluetooth
 
 BOARD_HAVE_IMX_CAMERA := false
+# no hardware camera
+USE_CAMERA_STUB := true
 
 USE_ION_ALLOCATOR := true
 USE_GPU_ALLOCATOR := false

@@ -8,7 +8,6 @@ PRODUCT_MANUFACTURER := freescale
 # Android infrastructures
 PRODUCT_PACKAGES += \
 	FSLOta					\
-	CactusPlayer                            \
 	ethernet                                \
 	libpxp                               \
 	fsl.imx.jar                             \

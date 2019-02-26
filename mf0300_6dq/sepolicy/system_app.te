@@ -2,3 +2,5 @@
 binder_call(system_app, wificond)
 # allow system_app to get access to serial number
 use_serialnumberservice(system_app)
+# allow system_app to read /proc/version
+allow system_app proc_version:file r_file_perms;

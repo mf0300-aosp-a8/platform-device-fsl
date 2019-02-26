@@ -4,3 +4,5 @@ binder_call(system_app, wificond)
 use_serialnumberservice(system_app)
 # allow system_app to read /proc/version
 allow system_app proc_version:file r_file_perms;
+# allow system_app to read files from selinuxfs
+allow system_app selinuxfs:file r_file_perms;

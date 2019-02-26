@@ -1,0 +1,2 @@
+# allow init to read /proc/version
+allow init proc_version:file r_file_perms;

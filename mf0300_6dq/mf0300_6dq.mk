@@ -142,6 +142,7 @@ PRODUCT_PACKAGES += \
 	TeamViewerQS
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.selinux=1 \
     config.disable_cameraservice=true \
     ro.tether.denied=true \
     ro.control_privapp_permissions=enforce \

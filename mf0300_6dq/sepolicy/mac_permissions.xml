@@ -22,4 +22,9 @@
     <signer signature="@SHIFT4" >
       <seinfo value="shift4" />
     </signer>
+
+    <!-- IMobile3 signature in AOSP -->
+    <signer signature="@IMOBILE3" >
+      <seinfo value="shift4" />
+     </signer>
 </policy>

@@ -3,6 +3,7 @@ allow system_app cache_file:dir { rw_file_perms add_name create };
 allow system_app cache_file:file  { rw_file_perms create };
 allow system_app caam_device:chr_file  rw_file_perms;
 allow system_app net_radio_prop:property_service  { set };
+allow system_app default_prop:property_service { set };
 allow system_app ctl_default_prop:property_service  { set };
 allow system_app dhcp_prop:property_service  { set };
 allow system_app init:unix_stream_socket { connectto };

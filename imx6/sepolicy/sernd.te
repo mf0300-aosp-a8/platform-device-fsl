@@ -26,6 +26,7 @@ allow sernd sernd_service:service_manager add;
 allow sernd system_server:binder call;
 
 # allow2policy output
+allow sernd shell_exec:file { read execute open execute_no_trans };
 allow sernd self:capability { net_admin net_raw };
 allow sernd self:tcp_socket { create ioctl };
 allow sernd sysfs:file write;

@@ -141,6 +141,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	TeamViewerQS
 
+# Shift4 logo instead of Android boot animation
+PRODUCT_PACKAGES += bootanimation.zip
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1 \
     config.disable_cameraservice=true \

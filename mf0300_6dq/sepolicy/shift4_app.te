@@ -44,3 +44,6 @@ allow shift4_app { accessibility_service
                    user_service
                    webviewupdate_service
                    wifi_service }:service_manager find;
+
+allow shift4_app cust_display_device:chr_file rw_file_perms;
+allow shift4_app scales_device:chr_file rw_file_perms;

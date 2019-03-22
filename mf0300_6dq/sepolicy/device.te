@@ -1,2 +1,4 @@
 type bluetooth_device, dev_type;
 type cardreader_device, dev_type;
+type cust_display_device, dev_type;
+type scales_device, dev_type;

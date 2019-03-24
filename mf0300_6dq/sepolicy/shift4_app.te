@@ -32,6 +32,7 @@ allow shift4_app { accessibility_service
                    input_service
                    jobscheduler_service
                    mediaserver_service
+                   media_session_service
                    mount_service
                    notification_service
                    power_service

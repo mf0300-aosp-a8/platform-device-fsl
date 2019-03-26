@@ -11,6 +11,7 @@ allow sernd sysfs_i2c:file w_file_perms;
 
 # allow socket operations
 allow sernd self:tcp_socket create_stream_socket_perms;
+allow sernd self:udp_socket create_socket_perms;
 allow sernd self:capability { net_admin net_raw };
 
 # allow ioctl request to change ethernet hw mac address

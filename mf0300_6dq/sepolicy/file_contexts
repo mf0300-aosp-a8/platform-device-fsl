@@ -49,3 +49,4 @@
 /data/TouchPID                                u:object_r:egtouchd_data_file:s0
 /data/eGalaxPipe_in                           u:object_r:egtouchd_data_file:s0
 /data/eGalaxPipe_out                          u:object_r:egtouchd_data_file:s0
+/data/tmpDrvLog                               u:object_r:egtouchd_data_file:s0

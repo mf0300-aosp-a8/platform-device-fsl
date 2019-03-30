@@ -17,4 +17,5 @@ allow sernd self:capability { net_admin net_raw };
 # allow ioctl request to change ethernet hw mac address
 allowxperm sernd self:tcp_socket ioctl SIOCSIFHWADDR;
 
+allow sernd toolbox_exec:file r_file_perms;
 allow sernd shell_exec:file rx_file_perms;

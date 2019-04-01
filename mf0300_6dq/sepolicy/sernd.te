@@ -18,5 +18,5 @@ allow sernd self:capability { net_admin net_raw };
 allowxperm sernd self:tcp_socket ioctl SIOCSIFHWADDR;
 allowxperm sernd self:udp_socket ioctl SIOCSIFNETMASK;
 
-allow sernd toolbox_exec:file r_file_perms;
+allow sernd toolbox_exec:file rx_file_perms;
 allow sernd shell_exec:file rx_file_perms;

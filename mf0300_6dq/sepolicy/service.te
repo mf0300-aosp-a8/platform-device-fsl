@@ -1,0 +1,2 @@
+# define new services for manipulate by service_manager
+type egtouchd_service,      service_manager_type;

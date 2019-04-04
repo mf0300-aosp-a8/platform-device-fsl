@@ -47,3 +47,4 @@ allow shift4_app { accessibility_service
 
 allow shift4_app cust_display_device:chr_file rw_file_perms;
 allow shift4_app scales_device:chr_file rw_file_perms;
+allow shift4_app usb_device:chr_file rw_file_perms;

@@ -19,6 +19,7 @@
 /dev/ir                   0660   system     system
 /dev/caam_kb              0660   system     system
 /dev/input/event*         0660   system     system
+/dev/bus/usb/*/*          0666   root       usb
 
 # sysfs properties
 /sys/devices/virtual/input/input*   name        0660  system   system

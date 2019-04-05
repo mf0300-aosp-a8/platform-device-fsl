@@ -81,6 +81,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(FSL_PROPRIETARY_PATH)/fsl-proprietary/gpu-viv/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
+# touch service for Echo POS WXGA (1366x768)
+PRODUCT_COPY_FILES += \
+    device/fsl/mf0300_6dq/eeti/eGTouchD:system/bin/eGTouchD \
+    device/fsl/mf0300_6dq/eeti/eGTouchA.ini:data/eGTouchA.ini \
+    device/fsl/mf0300_6dq/eeti/eGalaxTouch_VirtualDevice.idc:system/usr/idc/eGalaxTouch_VirtualDevice.idc
+
 # HWC2 HAL
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-impl

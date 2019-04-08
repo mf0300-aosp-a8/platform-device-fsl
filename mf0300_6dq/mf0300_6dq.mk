@@ -146,9 +146,7 @@ PRODUCT_PACKAGES += bootanimation.zip
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1 \
-    config.disable_systemui=true \
     config.disable_rtt=true \
-    config.disable_mediaproj=true \
     config.disable_samplingprof=true \
     config.disable_consumerir=true \
     config.disable_vrmanager=true \

@@ -40,3 +40,4 @@
 /sys/devices/soc0/soc/2100000\.aips-bus/[0-9a-f]+\.i2c(/.*)?                      u:object_r:sysfs_i2c:s0
 /system/bin/sernd               u:object_r:sernd_exec:s0
 /dev/socket/serialnumber        u:object_r:serialnumber_socket:s0
+/system/bin/eGTouchD            u:object_r:egtouchd_exec:s0

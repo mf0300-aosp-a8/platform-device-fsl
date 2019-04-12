@@ -259,6 +259,14 @@ service sernd /system/bin/sernd
     oneshot
     seclabel u:r:sernd:s0
 
+# touchscreen service for Echo POS WXGA (1366x768)
+service eGTouchD /system/bin/eGTouchD
+    class main
+    user root
+    group root
+    oneshot
+    seclabel u:r:egtouchd:s0
+
 on fs
 # mount ext4 partitions
     mount_all /fstab.freescale

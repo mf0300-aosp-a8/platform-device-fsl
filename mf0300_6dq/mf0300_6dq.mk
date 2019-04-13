@@ -87,6 +87,10 @@ PRODUCT_COPY_FILES += \
     device/fsl/mf0300_6dq/eeti/eGTouchA.ini:data/eGTouchA.ini \
     device/fsl/mf0300_6dq/eeti/eGalaxTouch_VirtualDevice.idc:system/usr/idc/eGalaxTouch_VirtualDevice.idc
 
+# touchscreen calibration tool for Echo POS WXGA (1366x768)
+PRODUCT_PACKAGES += \
+    eGalaxCalibrator_v0.11-usb
+
 # HWC2 HAL
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-impl

@@ -1,1 +1,3 @@
 type egtouchd, domain;
+
+type egtouchd_exec, exec_type, file_type;

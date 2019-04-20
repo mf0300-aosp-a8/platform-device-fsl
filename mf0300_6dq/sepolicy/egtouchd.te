@@ -5,3 +5,4 @@ type egtouchd_exec, exec_type, file_type;
 init_daemon_domain(egtouchd)
 binder_service(egtouchd)
 binder_use(egtouchd)
+binder_call(binderservicedomain, egtouchd)

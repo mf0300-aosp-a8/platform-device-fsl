@@ -2,6 +2,7 @@ type sysfs_i2c, fs_type, sysfs_type;
 type serialnumber_socket, file_type;
 type proc_version, fs_type;
 type hidraw_device, dev_type;
+type toolbox_extend_exec, exec_type, file_type;
 
 # Shift4 apps files
 type shift4_app_data_file, file_type, data_file_type, mlstrustedobject;

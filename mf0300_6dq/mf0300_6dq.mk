@@ -152,6 +152,7 @@ PRODUCT_PACKAGES += \
 	TeamViewerQS
 
 PRODUCT_PACKAGES += \
+	EpsonPrintEnabler \
 	Speedtest
 
 # Shift4 logo instead of Android boot animation

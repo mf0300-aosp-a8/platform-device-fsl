@@ -151,6 +151,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	TeamViewerQS
 
+PRODUCT_PACKAGES += \
+	Speedtest
+
 # Shift4 logo instead of Android boot animation
 PRODUCT_PACKAGES += bootanimation.zip
 

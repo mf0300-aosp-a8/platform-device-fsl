@@ -155,6 +155,10 @@ PRODUCT_PACKAGES += \
 	EpsonPrintEnabler \
 	Speedtest
 
+# Default permission grant exceptions
+PRODUCT_COPY_FILES += \
+    device/fsl/mf0300_6dq/default-permissions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default-permissions/default-permissions.xml
+
 # Shift4 logo instead of Android boot animation
 PRODUCT_PACKAGES += bootanimation.zip
 

@@ -43,3 +43,5 @@
 /dev/socket/serialnumber        u:object_r:serialnumber_socket:s0
 /system/bin/eGTouchD            u:object_r:egtouchd_exec:s0
 /system/bin/grep                u:object_r:toolbox_extend_exec:s0
+
+/system/usr/idc/eGalaxTouch_VirtualDevice.idc u:object_r:egtouchd_data_file:s0

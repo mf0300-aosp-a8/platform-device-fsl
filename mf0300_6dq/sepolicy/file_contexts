@@ -45,3 +45,4 @@
 /system/bin/grep                u:object_r:toolbox_extend_exec:s0
 
 /system/usr/idc/eGalaxTouch_VirtualDevice.idc u:object_r:egtouchd_data_file:s0
+/data/eGTouchA.ini                            u:object_r:egtouchd_data_file:s0

@@ -1,0 +1,2 @@
+# execution context for services
+eGTouchD   u:object_r:egtouchd_service:s0

@@ -1,5 +1,4 @@
 type egtouchd, domain;
-
 type egtouchd_exec, exec_type, file_type;
 
 init_daemon_domain(egtouchd)
@@ -11,3 +10,4 @@ allow egtouchd proc_version:file r_file_perms;
 allow egtouchd shell_exec:file rx_file_perms;
 allow egtouchd toolbox_exec:file rx_file_perms;
 allow egtouchd hidraw_device:chr_file rw_file_perms;
+allow egtouchd self:capability { kill dac_override dac_read_search fsetid fowner };

@@ -12,3 +12,4 @@ allow egtouchd toolbox_exec:file rx_file_perms;
 allow egtouchd hidraw_device:chr_file rw_file_perms;
 allow egtouchd self:capability { kill dac_override dac_read_search fsetid fowner };
 allow egtouchd uhid_device:chr_file rw_file_perms;
+allow egtouchd input_device:chr_file { getattr setattr };

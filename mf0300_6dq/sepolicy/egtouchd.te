@@ -17,3 +17,4 @@ allow egtouchd sysfs:dir r_dir_perms;
 allow egtouchd toolbox_extend_exec:file rx_file_perms;
 allow egtouchd egtouchd_data_file:fifo_file create_file_perms;
 allow egtouchd egtouchd_data_file:file create_file_perms;
+allow egtouchd device:dir r_dir_perms;

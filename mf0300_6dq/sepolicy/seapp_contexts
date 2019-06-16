@@ -1,2 +1,3 @@
 # shift4 selinux app domain context file type
 user=_app seinfo=shift4 domain=shift4_app type=shift4_app_data_file
+user=system seinfo=platform name=com.eeti.android.egalaxcalibrator domain=system_app type=system_app_data_file

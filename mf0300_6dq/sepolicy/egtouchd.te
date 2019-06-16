@@ -19,3 +19,4 @@ allow egtouchd egtouchd_data_file:fifo_file create_file_perms;
 allow egtouchd egtouchd_data_file:file create_file_perms;
 allow egtouchd device:dir r_dir_perms;
 allow egtouchd system_data_file:dir rw_dir_perms;
+file_type_auto_trans(egtouchd, system_data_file, egtouchd_data_file)

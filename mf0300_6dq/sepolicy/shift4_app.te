@@ -39,6 +39,7 @@ allow shift4_app { accessibility_service
                    power_service
                    registry_service
                    sensorservice_service
+                   shortcut_service
                    surfaceflinger_service
                    textservices_service
                    uimode_service

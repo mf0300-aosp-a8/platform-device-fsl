@@ -36,11 +36,12 @@ int find_loop_device(char* loopname, size_t name_max) {
   snprintf(loopname, name_max, "/dev/block/loop%d", devnr);
 
   struct stat st;
-  if (stat(loopname, &st) == -1 && errno == ENOENT) {
-    dev_t dev_id = makedev(7, devnr);
-    if (mknod(loopname, S_IFBLK | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, dev_id) == -1) {
-      return -1;
+  if (stat(loopname, &st) == -1) {
+    if (errno == ENOENT) {
+      dev_t dev_id = makedev(7, devnr);
+      return mknod(loopname, S_IFBLK | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, dev_id);
     }
+    return -1;
   }
 
   return 0;

@@ -56,46 +56,21 @@ int find_loop_device(char* loopname, size_t name_max) {
  */
 int mount_file(const char* filename, const char* loopname, uint64_t offset, uint64_t max_size) {
   int loopfd = open(loopname, O_RDWR);
-  if (loopfd == -1) {
-    return -1;
-  }
-
   int filefd = open(filename, O_RDWR);
-  if (filefd == -1) {
-    int err = errno;
-    close(loopfd);
-    errno = err;
-    return -1;
+
+  if (loopfd != -1 && filefd != -1 && ioctl(loopfd, LOOP_SET_FD, filefd) != -1) {
+    struct loop_info64 st;
+    if (ioctl(loopfd, LOOP_GET_STATUS64, &st) != -1) {
+      st.lo_offset = offset;
+      st.lo_sizelimit = max_size;
+      ioctl(loopfd, LOOP_SET_STATUS64, &st);
+    }
   }
 
-  if (ioctl(loopfd, LOOP_SET_FD, filefd) == -1) {
-    int err = errno;
-    close(loopfd);
-    close(filefd);
-    errno = err;
-    return -1;
-  }
-
-  struct loop_info64 st;
-  if (ioctl(loopfd, LOOP_GET_STATUS64, &st) == -1) {
-    int err = errno;
-    close(loopfd);
-    close(filefd);
-    errno = err;
-    return -1;
-  }
-  st.lo_offset = offset;
-  st.lo_sizelimit = max_size;
-  if (ioctl(loopfd, LOOP_SET_STATUS64, &st) == -1) {
-    int err = errno;
-    close(loopfd);
-    close(filefd);
-    errno = err;
-    return -1;
-  }
-
+  int err = errno;
   close(loopfd);
   close(filefd);
+  errno = err;
 
   return 0;
 }

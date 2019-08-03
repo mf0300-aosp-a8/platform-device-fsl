@@ -23,7 +23,11 @@ static size_t min(size_t a, size_t b) { return a < b ? a : b; }
  * so it may work incorrect with any other partition device names.
  */
 int device_from_partition(const char* part_name, char* buffer, size_t buf_size) {
-  const char* last = part_name + strlen(part_name) - 1;
+  size_t part_name_len = strlen(part_name);
+  if (part_name_len == 0) {
+    return -1;
+  }
+  const char* last = part_name + part_name_len - 1;
 
   int p_found = 0;
   int should_stop = 0;

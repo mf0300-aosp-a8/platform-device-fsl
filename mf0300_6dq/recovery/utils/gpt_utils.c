@@ -26,6 +26,7 @@ static ssize_t sread(int fd, void* buf, size_t count, off_t offset) {
   return count - bleft;
 }
 
+static size_t min(size_t a, size_t b) { return a < b ? a : b; }
 
 /**
  * find partition with name @a partname on device @a dev and return its
@@ -61,9 +62,9 @@ int get_partition_offset_and_size(const char* dev, const char* partname,
       // partition name in table entry saved as UTF-16LE string,
       // so convert given name to this encoding
       // warning, only ASCII names are supported!
-      char wpartname[72];
+      char wpartname[72];                 // 36 UTF-16 symbols
       memset(wpartname, 0, sizeof(wpartname));
-      size_t name_len = strlen(partname);
+      size_t name_len = min(strlen(partname), sizeof(wpartname) / 2);
       for (size_t i = 0; i < name_len; ++i) {
         wpartname[2*i] = partname[i];
       }

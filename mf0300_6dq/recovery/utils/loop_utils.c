@@ -21,7 +21,6 @@ int find_loop_device(char* loopname, size_t name_max) {
   int loopctlfd = open("/dev/loop-control", O_RDWR);
   if (loopctlfd == -1) {
     return -1;
-    return loopctlfd;
   }
 
   int devnr = ioctl(loopctlfd, LOOP_CTL_GET_FREE);
@@ -31,8 +30,7 @@ int find_loop_device(char* loopname, size_t name_max) {
   errno = err;        // before return, close() return value is ignored
 
   if (devnr == -1) {
-    return -2;
-    return devnr;
+    return -1;
   }
 
   snprintf(loopname, name_max, "/dev/block/loop%d", devnr);
@@ -41,7 +39,6 @@ int find_loop_device(char* loopname, size_t name_max) {
   if (stat(loopname, &st) == -1 && errno == ENOENT) {
     dev_t dev_id = makedev(7, devnr);
     if (mknod(loopname, S_IFBLK | S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP, dev_id) == -1) {
-      return -3;
       return -1;
     }
   }
@@ -60,7 +57,6 @@ int mount_file(const char* filename, const char* loopname, uint64_t offset, uint
   int loopfd = open(loopname, O_RDWR);
   if (loopfd == -1) {
     return -1;
-    return loopfd;
   }
 
   int filefd = open(filename, O_RDWR);
@@ -68,7 +64,6 @@ int mount_file(const char* filename, const char* loopname, uint64_t offset, uint
     int err = errno;
     close(loopfd);
     errno = err;
-    return -2;
     return -1;
   }
 
@@ -77,7 +72,6 @@ int mount_file(const char* filename, const char* loopname, uint64_t offset, uint
     close(loopfd);
     close(filefd);
     errno = err;
-    return -3;
     return -1;
   }
 
@@ -87,7 +81,6 @@ int mount_file(const char* filename, const char* loopname, uint64_t offset, uint
     close(loopfd);
     close(filefd);
     errno = err;
-    return -4;
     return -1;
   }
   st.lo_offset = offset;
@@ -97,7 +90,6 @@ int mount_file(const char* filename, const char* loopname, uint64_t offset, uint
     close(loopfd);
     close(filefd);
     errno = err;
-    return -5;
     return -1;
   }
 

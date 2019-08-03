@@ -49,7 +49,7 @@ int get_partition_offset_and_size(const char* dev, const char* partname,
   char* gpt_data = (char*)malloc(gpt_data_size);
 
   // skip protective MBR (1 sector, first 512 bytes)
-  if (sread(dev_fd, gpt_data, gpt_data_size, 512) == gpt_data_size) {
+  if (gpt_data && sread(dev_fd, gpt_data, gpt_data_size, 512) == gpt_data_size) {
     char* table_end = gpt_data + gpt_data_size;
     char* curr_entry = gpt_data + 512;    // skip GPT header
     const int entry_size = 128;           // according to GPT specification

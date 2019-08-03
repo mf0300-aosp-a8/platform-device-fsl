@@ -40,12 +40,12 @@ int get_partition_offset_and_size(const char* dev, const char* partname,
                                   uint64_t* offset, uint64_t* size) {
   int dev_fd = open(dev, O_RDONLY);
   if (dev_fd == -1) {
-    return dev_fd;
+    return -1;
   }
 
   errno = 0;
 
-  int gpt_data_size = 33*512;   // header + 32 sectors with partition entries
+  int gpt_data_size = 33 * 512;   // header + 32 sectors with partition entries
   char* gpt_data = (char*)malloc(gpt_data_size);
 
   // skip protective MBR (1 sector, first 512 bytes)
@@ -66,12 +66,12 @@ int get_partition_offset_and_size(const char* dev, const char* partname,
       memset(wpartname, 0, sizeof(wpartname));
       size_t name_len = min(strlen(partname), sizeof(wpartname) / 2);
       for (size_t i = 0; i < name_len; ++i) {
-        wpartname[2*i] = partname[i];
+        wpartname[2 * i] = partname[i];
       }
 
       // iterate over all partition entries to find requested partition name
       while (curr_entry != table_end) {
-        if (memcmp(wpartname, (wchar_t*)(curr_entry + 56), 2*name_len) == 0) {
+        if (memcmp(wpartname, (wchar_t*)(curr_entry + 56), 2 * name_len) == 0) {
           uint64_t first_lba = *(uint64_t*)(curr_entry + 32);
           uint64_t last_lba = *(uint64_t*)(curr_entry + 40);
           *offset = first_lba * 512;

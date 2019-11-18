@@ -22,4 +22,9 @@
     <signer signature="@LIGHTHOUSENETWORK" >
         <seinfo value="lighthousenetwork" />
     </signer>
+
+    <!-- Old Harbortouch POS signature in AOSP -->
+    <signer signature="@HARBORTOUCHPOS" >
+        <seinfo value="lighthousenetwork" />
+    </signer>
 </policy>

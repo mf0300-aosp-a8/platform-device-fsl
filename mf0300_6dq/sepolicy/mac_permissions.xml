@@ -23,6 +23,11 @@
       <seinfo value="shift4" />
     </signer>
 
+    <!-- Harbortouch POS signature in AOSP -->
+    <signer signature="@HARBORTOUCHPOS" >
+      <seinfo value="shift4" />
+    </signer>
+
     <!-- IMobile3 signature in AOSP -->
     <signer signature="@IMOBILE3" >
       <seinfo value="shift4" />

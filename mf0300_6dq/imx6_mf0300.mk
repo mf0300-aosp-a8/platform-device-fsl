@@ -274,6 +274,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES +=	\
 	device/fsl/mf0300_6dq/security/shift4.x509.pem:system/etc/security/shift4.x509.pem \
+	device/fsl/mf0300_6dq/security/harbortouch_pos.x509.pem:system/etc/security/harbortouch_pos.x509.pem \
 	device/fsl/common/input/Dell_Dell_USB_Keyboard.kl:system/usr/keylayout/Dell_Dell_USB_Keyboard.kl \
 	device/fsl/common/input/Dell_Dell_USB_Keyboard.idc:system/usr/idc/Dell_Dell_USB_Keyboard.idc \
 	device/fsl/common/input/Dell_Dell_USB_Entry_Keyboard.idc:system/usr/idc/Dell_Dell_USB_Entry_Keyboard.idc \

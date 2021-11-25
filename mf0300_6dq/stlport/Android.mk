@@ -35,7 +35,7 @@ libstlport_src_files := \
 	src/cxa.c \
 
 libstlport_c_includes := \
-	external/stlport/stlport \
+	device/fsl/mf0300_6dq/stlport/stlport \
 	bionic \
         bionic/libstdc++/include \
 

@@ -19,4 +19,3 @@
 # capitalized by convention.
 
 export DISPLAY_BUILD_NUMBER:=true
-export BUILD_NUMBER:=$(shell date +%y%m%d.%H%M%S)

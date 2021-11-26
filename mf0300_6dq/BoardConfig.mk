@@ -16,6 +16,10 @@ TARGET_RECOVERY_FSTAB = device/fsl/mf0300_6dq/fstab.freescale
 PRODUCT_COPY_FILES +=	\
 	device/fsl/mf0300_6dq/fstab.freescale:root/fstab.freescale
 
+# copy dummy vendor.img for backward compatibility
+PRODUCT_COPY_FILES +=\
+	device/fsl/mf0300_6dq/vendor-dummy.img:vendor.img
+
 DEVICE_PACKAGE_OVERLAYS := device/fsl/mf0300_6dq/overlay
 
 TARGET_BOOTLOADER_BOARD_NAME := MF0300
